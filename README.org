@@ -10,14 +10,26 @@ For instructions on how to set up the project locally, the user is referred to t
 ** Usage
 Mention RTM tutorials. See also the [[https://openfoam.org/resources][OpenFOAM documentation]].
 
-** Copyright
+** Contributing
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+If you have a suggestion that would make this better, please fork the repo and create a merge request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b feature/NewFeature)
+3. Commit your Changes (git commit -m 'Add some NewFeature')
+4. Add yourself to docs/Contributors.md
+5. Push to the Branch (git push origin feature/NewFeature)
+6. Open a Merge Request
+
+** License
   of6-rtm is free software: you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software
   Foundation, either version 3 of the License, or (at your option) any later
   version.  License terms under which you can copy the files can be found [[./COPYING][here]] or at
   [[http://www.gnu.org/licenses/]].
 
-** If you use this software, follow good scientific practice and cite it properly. See how to cite in[[][this file].
+** Citing of6-rtm
+You need to cite of6-rtm when using it. See [[./CITATION.cff]] for detailed information.
 
 
 * [[https://openfoam.org/download/source][Download and installation instructions]]
