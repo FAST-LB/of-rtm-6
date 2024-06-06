@@ -1,156 +1,125 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
-     \\/     M anipulation  |
+  \\      /  F ield         | foam-extend: Open Source CFD
+   \\    /   O peration     | Version:     4.0
+    \\  /    A nd           | Web:         http://www.foam-extend.org
+     \\/     M anipulation  | For copyright notice see file Copyright
 -------------------------------------------------------------------------------
 License
-    This file is part of OpenFOAM.
+    This file is part of foam-extend.
 
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+    foam-extend is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation, either version 3 of the License, or (at your
+    option) any later version.
 
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
+    foam-extend is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
+    along with foam-extend.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::functionObjects::forces
+    Foam::forces
 
 Description
     Calculates the forces and moments by integrating the pressure and
     skin-friction forces over a given list of patches.
 
-    Member function forces::write() calculates the forces/moments and
-    writes the forces/moments into the file \<timeDir\>/forces.dat and bin
-    data (if selected) to the file \<timeDir\>/forces_bin.dat
+    Member function calcForcesMoment() calculates and returns the forces and
+    moments.
 
-    Example of function object specification:
-    \verbatim
-    forces1
-    {
-        type        forces;
-        libs        ("libforces.so");
-        ...
-        log         yes;
-        patches     (walls);
-
-        binData
-        {
-            nBin        20;
-            direction   (1 0 0);
-            cumulative  yes;
-        }
-    }
-    \endverbatim
-
-Usage
-    \table
-        Property     | Description             | Required    | Default value
-        type         | Type name: forces       | yes         |
-        log          | Write force data to standard output | no | no
-        patches      | Patches included in the forces calculation | yes |
-        p            | Pressure field name     | no          | p
-        U            | Velocity field name     | no          | U
-        rho          | Density field name (see below) | no   | rho
-        CofR         | Centre of rotation (see below) | no   |
-        directForceDensity | Force density supplied directly (see below)|no|no
-        fD           | Name of force density field (see below) | no | fD
-    \endtable
-
-    Bin data is optional, but if the dictionary is present, the entries must
-    be defined according o
-    \table
-        nBin         | number of data bins     | yes         |
-        direction    | direction along which bins are defined | yes |
-        cumulative   | bin data accumulated with incresing distance | yes |
-    \endtable
-
-Note
-  - For incompressible cases, set \c rho to \c rhoInf.  You will then be
-    required to provide a \c rhoInf value corresponding to the free-stream
-    constant density.
-  - If the force density is supplied directly, set the \c directForceDensity
-    flag to 'yes', and supply the force density field using the \c
-    fDName entry
-  - The centre of rotation (CofR) for moment calculations can either be
-    specified by an \c CofR entry, or be taken from origin of the local
-    coordinate system.  For example,
-    \verbatim
-        CofR        (0 0 0);
-    \endverbatim
-    or
-    \verbatim
-        coordinateSystem
-        {
-            origin  (0 0 0);
-            e3      (0 0 1);
-            e1      (1 0 0);
-        }
-    \endverbatim
-
-See also
-    Foam::functionObject
-    Foam::functionObjects::fvMeshFunctionObject
-    Foam::functionObjects::logFiles
-    Foam::functionObjects::timeControl
-    Foam::forceCoeffs
+    Member function forces::write() calls calcForcesMoment() and writes the
+    forces and moments into the file \<timeDir\>/forces.dat
 
 SourceFiles
     forces.C
+    IOforces.H
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef functionObjects_forces_H
-#define functionObjects_forces_H
+#ifndef forces_H
+#define forces_H
 
-#include "fvMeshFunctionObject.H"
-#include "logFiles.H"
-#include "coordinateSystem.H"
+#include "primitiveFieldsFwd.H"
 #include "volFieldsFwd.H"
 #include "HashSet.H"
+#include "Tuple2.H"
+#include "OFstream.H"
+#include "Switch.H"
+#include "pointFieldFwd.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-namespace functionObjects
-{
+
+// Forward declaration of classes
+class objectRegistry;
+class dictionary;
+class mapPolyMesh;
 
 /*---------------------------------------------------------------------------*\
                            Class forces Declaration
 \*---------------------------------------------------------------------------*/
 
 class forces
-:
-    public fvMeshFunctionObject,
-    public logFiles
 {
+public:
+
+    // Tuple which holds the pressure (.first()) and viscous (.second) forces
+    typedef Tuple2<vector, vector> pressureViscous;
+
+    // Tuple which holds the forces (.first()) and moment (.second)
+    // pressure/viscous forces Tuples.
+    typedef Tuple2<pressureViscous, pressureViscous> forcesMoments;
+
+    //- Sum operation class to accumulate the pressure, viscous forces
+    //  and moments
+    class sumOp
+    {
+    public:
+
+        forcesMoments operator()
+        (
+            const forcesMoments& fm1,
+            const forcesMoments& fm2
+        ) const
+        {
+            return forcesMoments
+            (
+                pressureViscous
+                (
+                    fm1.first().first() + fm2.first().first(),
+                    fm1.first().second() + fm2.first().second()
+                ),
+                pressureViscous
+                (
+                    fm1.second().first() + fm2.second().first(),
+                    fm1.second().second() + fm2.second().second()
+                )
+            );
+        }
+    };
+
 
 protected:
 
-    // Protected data
+    // Private data
 
-        //- Enumeration for ensuring the right file is accessed
-        enum fileID
-        {
-            MAIN_FILE = 0,
-            BINS_FILE = 1
-        };
+        //- Name of this set of forces,
+        //  Also used as the name of the probes directory.
+        word name_;
 
-        //- Pressure, viscous and porous force per bin
-        List<Field<vector>> force_;
+        const objectRegistry& obr_;
 
-        //- Pressure, viscous and porous moment per bin
-        List<Field<vector>> moment_;
+        //- on/off switch
+        bool active_;
 
+        //- Switch to send output to Info as well as to file
+        Switch log_;
 
         // Read from dictionary
 
@@ -178,80 +147,34 @@ protected:
             //- Reference pressure
             scalar pRef_;
 
-            //- Coordinate system used when evaluating forces/moments
-            coordinateSystem coordSys_;
-
-            //- Flag to indicate whether we are using a local co-ordinate sys
-            bool localSystem_;
-
-            //- Flag to include porosity effects
-            bool porosity_;
+            //- Centre of rotation
+            vector CofR_;
 
 
-            // Bin information
-
-                //- Number of bins
-                label nBin_;
-
-                //- Direction used to determine bin orientation
-                vector binDir_;
-
-                //- Distance between bin divisions
-                scalar binDx_;
-
-                //- Minimum bin bounds
-                scalar binMin_;
-
-                //- Bin positions along binDir
-                List<point> binPoints_;
-
-                //- Should bin data be cumulative?
-                bool binCumulative_;
+        //- Forces/moment file ptr
+        autoPtr<OFstream> forcesFilePtr_;
 
 
-            //- Initialised flag
-            bool initialised_;
+    // Private Member Functions
 
-
-    // Protected Member Functions
-
-        //- Create file names for forces and bins
-        wordList createFileNames(const dictionary& dict) const;
+        //- If the forces file has not been created create it
+        void makeFile();
 
         //- Output file header information
-        virtual void writeFileHeader(const label i);
-
-        //- Initialise the fields
-        void initialise();
+        virtual void writeFileHeader();
 
         //- Return the effective viscous stress (laminar + turbulent).
         tmp<volSymmTensorField> devRhoReff() const;
+        
+        //- Return the effective viscosity
+        tmp<Foam::volScalarField> mu() const;
 
-        //- Dynamic viscosity field
-        tmp<volScalarField> mu() const;
-
-        //- Return rho if specified otherwise rhoRef
+        //- Return rho if rhoName is specified otherwise rhoRef
         tmp<volScalarField> rho() const;
 
         //- Return rhoRef if the pressure field is dynamic, i.e. p/rho
         //  otherwise return 1
         scalar rho(const volScalarField& p) const;
-
-        //- Accumulate bin data
-        void applyBins
-        (
-            const vectorField& Md,
-            const vectorField& fN,
-            const vectorField& fT,
-            const vectorField& fP,
-            const vectorField& d
-        );
-
-        //- Helper function to write force data
-        void writeForces();
-
-        //- Helper function to write bin data
-        void writeBins();
 
         //- Disallow default bitwise copy construct
         forces(const forces&);
@@ -268,20 +191,14 @@ public:
 
     // Constructors
 
-        //- Construct from Time and dictionary
+        //- Construct for given objectRegistry and dictionary.
+        //  Allow the possibility to load fields from files
         forces
         (
             const word& name,
-            const Time& runTime,
-            const dictionary& dict
-        );
-
-        //- Construct from objectRegistry and dictionary
-        forces
-        (
-            const word& name,
-            const objectRegistry& obr,
-            const dictionary&
+            const objectRegistry&,
+            const dictionary&,
+            const bool loadFromFiles = false
         );
 
 
@@ -291,29 +208,45 @@ public:
 
     // Member Functions
 
+        //- Return name of the set of forces
+        virtual const word& name() const
+        {
+            return name_;
+        }
+
         //- Read the forces data
-        virtual bool read(const dictionary&);
+        virtual void read(const dictionary&);
 
-        //- Calculate the forces and moments
-        virtual void calcForcesMoment();
+        //- Execute, currently does nothing
+        virtual void execute();
 
+        //- Execute at the final time-loop, currently does nothing
+        virtual void end();
+
+        //- Write the forces
+        virtual void write();
+
+        //- Calculate and return forces and moment
+        virtual forcesMoments calcForcesMoment() const;
+        
         //- Return the total force
         virtual vector forceEff() const;
 
         //- Return the total moment
         virtual vector momentEff() const;
 
-        //- Execute, currently does nothing
-        virtual bool execute();
+        //- Update for changes of mesh
+        virtual void updateMesh(const mapPolyMesh&)
+        {}
 
-        //- Write the forces
-        virtual bool write();
+        //- Update for changes of mesh
+        virtual void movePoints(const pointField&)
+        {}
 };
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-} // End namespace functionObjects
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

@@ -163,7 +163,8 @@ public:
             (
                 const label speciei,
                 const scalar p,
-                const scalar T
+                const scalar T,
+                const scalar cure
             ) const = 0;
 
             //- Thermal conductivity [W/m/K]
@@ -171,7 +172,8 @@ public:
             (
                 const label speciei,
                 const scalar p,
-                const scalar T
+                const scalar T,
+                const scalar cure
             ) const = 0;
 
             //- Thermal diffusivity of enthalpy [kg/m/s]
@@ -179,8 +181,10 @@ public:
             (
                 const label speciei,
                 const scalar p,
-                const scalar T
-            ) const = 0;
+                const scalar T,
+                const scalar cure
+            ) const = 0;           
+            
 
             //- Density [kg/m3]
             virtual scalar rho

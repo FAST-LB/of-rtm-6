@@ -252,6 +252,10 @@ public:
 
             //- Return non-const access to arguments
             inline stringList& args();
+            
+            //- Return additionl arguments,
+            //  i.e. those additional to the executable itself
+            stringList::subList additionalArgs() const;
 
             //- Return the argument corresponding to index.
             inline const string& arg(const label index) const;

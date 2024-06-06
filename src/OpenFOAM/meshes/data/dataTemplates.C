@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2015-2019 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2015-2018 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -40,15 +40,10 @@ void Foam::data::setSolverPerformance
 
     List<SolverPerformance<Type>> perfs;
 
-    const label timeIndex =
-        this->time().subCycling()
-      ? this->time().prevTimeState().timeIndex()
-      : this->time().timeIndex();
-
-    if (prevTimeIndex_ != timeIndex)
+    if (prevTimeIndex_ != this->time().timeIndex())
     {
         // Reset solver performance between iterations
-        prevTimeIndex_ = timeIndex;
+        prevTimeIndex_ = this->time().timeIndex();
         dict.clear();
     }
     else

@@ -92,9 +92,18 @@ public:
 
         //- Reset the source list
         void reset(const dictionary& dict);
+        
+        //- Update porosity data
+        void transformModelData();
 
         //- Add resistance
         void addResistance(fvVectorMatrix& UEqn);
+        
+        //- Add resistance
+        void addResistance(fvVectorMatrix& UEqn, const volScalarField& cellIbMask);
+        
+        //- Add resistance
+        void addResistance(fvVectorMatrix& UEqn, const volScalarField& cellIbMask, const volVectorField& UFibers);
 
         //- Add resistance
         void addResistance

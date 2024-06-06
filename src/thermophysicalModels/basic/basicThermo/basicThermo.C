@@ -209,6 +209,8 @@ Foam::basicThermo::basicThermo
             Zero
         )
     ),
+    
+    cure_(lookupOrConstruct(mesh, "cure")),
 
     dpdt_(lookupOrDefault<Switch>("dpdt", true))
 {}
@@ -268,7 +270,9 @@ Foam::basicThermo::basicThermo
             dimensionSet(1, -1, -1, 0, 0),
             Zero
         )
-    )
+    ),
+
+    cure_(lookupOrConstruct(mesh, "cure"))
 {}
 
 
@@ -477,7 +481,7 @@ Foam::wordList Foam::basicThermo::splitThermoName
     if (beg < thermoName.size())
     {
         cmpts[i] = thermoName.substr(beg, string::npos);
-        cmpts[i].replaceAll(">","");
+        cmpts[i++].replaceAll(">","");
     }
 
     return cmpts;
@@ -519,6 +523,15 @@ const Foam::scalarField& Foam::basicThermo::alpha(const label patchi) const
     return alpha_.boundaryField()[patchi];
 }
 
+const Foam::volScalarField& Foam::basicThermo::cure() const
+{
+    return cure_;
+}
+
+Foam::volScalarField& Foam::basicThermo::cure()
+{
+    return cure_;
+}
 
 bool Foam::basicThermo::read()
 {

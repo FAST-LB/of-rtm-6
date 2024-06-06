@@ -74,6 +74,9 @@ protected:
             //- Laminar thermal diffusuvity [kg/m/s]
             volScalarField alpha_;
 
+            //- Cure degree [-]
+            volScalarField& cure_;
+
         //- Should the dpdt term be included in the enthalpy equation
         Switch dpdt_;
 
@@ -409,6 +412,12 @@ public:
 
             //- Thermal diffusivity for enthalpy of mixture [kg/m/s]
             virtual const volScalarField& alpha() const;
+
+            //- Const reference to cure degree
+            virtual const volScalarField& cure() const;
+
+            //- Non const reference to cure degree
+            virtual volScalarField& cure();
 
             //- Thermal diffusivity for enthalpy of mixture for patch [kg/m/s]
             virtual const scalarField& alpha

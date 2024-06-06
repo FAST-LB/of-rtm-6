@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2019 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -56,7 +56,9 @@ void Foam::blockMesh::calcMergeInfo()
     }
 
     // set unused to -1
-    mergeList_.setSize(nPoints_, -1);
+    mergeList_.setSize(nPoints_);
+    mergeList_ = -1;
+
 
     const pointField& blockPoints = topology().points();
     const cellList& blockCells = topology().cells();
@@ -111,11 +113,8 @@ void Foam::blockMesh::calcMergeInfo()
         // Collated points detected by initially taking a constant factor of
         // the size of the block.
 
-        const boundBox bb
-        (
-            blockCells[blockPlabel].points(blockFaces, blockPoints)
-        );
-        const scalar mergeSqrDist = magSqr(50*small*bb.span());
+        boundBox bb(blockCells[blockPlabel].points(blockFaces, blockPoints));
+        const scalar mergeSqrDist = magSqr(10*small*bb.span());
 
         // This is an N^2 algorithm
 
@@ -549,29 +548,35 @@ void Foam::blockMesh::calcMergeInfo()
     }
 
 
-    // Sort merge list and count number of unique points
-    label nUniqPoints = 0;
+    // Sort merge list to return new point label (in new shorter list)
+    // given old point label
+    label newPointLabel = 0;
 
-    forAll(mergeList_, pointi)
+    forAll(mergeList_, pointLabel)
     {
-        if (mergeList_[pointi] > pointi)
+        if (mergeList_[pointLabel] > pointLabel)
         {
             FatalErrorInFunction
                 << "Merge list contains point index out of range"
                 << exit(FatalError);
         }
 
-        if (mergeList_[pointi] == -1 || mergeList_[pointi] == pointi)
+        if
+        (
+            mergeList_[pointLabel] == -1
+         || mergeList_[pointLabel] == pointLabel
+        )
         {
-            mergeList_[pointi] = nUniqPoints++;
+            mergeList_[pointLabel] = newPointLabel;
+            newPointLabel++;
         }
         else
         {
-            mergeList_[pointi] = mergeList_[mergeList_[pointi]];
+            mergeList_[pointLabel] = mergeList_[mergeList_[pointLabel]];
         }
     }
 
-    nPoints_ = nUniqPoints;
+    nPoints_ = newPointLabel;
 }
 
 

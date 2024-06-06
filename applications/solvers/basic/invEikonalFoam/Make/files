@@ -1,0 +1,3 @@
+invEikonalFoam.C
+
+EXE = $(FOAM_APPBIN)/invEikonalFoam

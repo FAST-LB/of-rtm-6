@@ -149,7 +149,8 @@ inline Foam::scalar
 Foam::thermophysicalPropertiesSelector<ThermophysicalProperties>::mu
 (
     scalar p,
-    scalar T
+    scalar T,
+    scalar cure
 ) const
 {
     return propertiesPtr_->mu(p, T);
@@ -161,7 +162,8 @@ inline Foam::scalar
 Foam::thermophysicalPropertiesSelector<ThermophysicalProperties>::kappa
 (
     scalar p,
-    scalar T
+    scalar T,
+    scalar cure
 ) const
 {
     return propertiesPtr_->kappa(p, T);
@@ -173,7 +175,8 @@ inline Foam::scalar
 Foam::thermophysicalPropertiesSelector<ThermophysicalProperties>::alphah
 (
     scalar p,
-    scalar T
+    scalar T,
+    scalar cure
 ) const
 {
     return propertiesPtr_->alphah(p, T);

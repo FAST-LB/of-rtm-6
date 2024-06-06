@@ -338,6 +338,10 @@ public:
 
             //- Update mesh corresponding to the given map
             virtual void updateMesh(const mapPolyMesh& mpm);
+            
+            //- Sync mesh update for topo change on other processors
+            //  Locally, there is no topological change
+            virtual void syncUpdateMesh();
 
             //- Move points, returns volumes swept by faces in motion
             virtual tmp<scalarField> movePoints(const pointField&);

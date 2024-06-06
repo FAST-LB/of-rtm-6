@@ -46,7 +46,6 @@ inline void deleteDemandDrivenData(DataPtr& dataPtr)
     }
 }
 
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 } // End namespace Foam

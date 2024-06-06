@@ -201,7 +201,13 @@ public:
 
         //- Add resistance
         virtual void correct(fvVectorMatrix& UEqn) const;
+        
+        //- Add resistance
+        virtual void correct(fvVectorMatrix& UEqn, const volScalarField& cellIbMask) const;
 
+        //- Add resistance
+        virtual void correct(fvVectorMatrix& UEqn, const volScalarField& cellIbMask, const volVectorField& UFibers) const;
+        
         //- Add resistance
         virtual void correct
         (

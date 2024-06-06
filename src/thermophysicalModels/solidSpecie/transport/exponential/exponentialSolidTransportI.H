@@ -73,7 +73,9 @@ Foam::exponentialSolidTransport<Thermo>::New
 template<class Thermo>
 inline Foam::scalar Foam::exponentialSolidTransport<Thermo>::kappa
 (
-    const scalar p, const scalar T
+    const scalar p, 
+    const scalar T, 
+    const scalar cure
 ) const
 {
     return (kappa0_*pow(T/Tref_, n0_));
@@ -83,7 +85,9 @@ inline Foam::scalar Foam::exponentialSolidTransport<Thermo>::kappa
 template<class Thermo>
 inline Foam::vector Foam::exponentialSolidTransport<Thermo>::Kappa
 (
-    const scalar p, const scalar T
+    const scalar p, 
+    const scalar T, 
+    const scalar cure
 ) const
 {
     const scalar kappa(kappa0_*pow(T/Tref_, n0_));
@@ -92,8 +96,12 @@ inline Foam::vector Foam::exponentialSolidTransport<Thermo>::Kappa
 
 
 template<class Thermo>
-inline Foam::scalar Foam::exponentialSolidTransport<Thermo>::
-mu(const scalar p, const scalar T) const
+inline Foam::scalar Foam::exponentialSolidTransport<Thermo>::mu
+(
+    const scalar p, 
+    const scalar T, 
+    const scalar cure
+) const
 {
     NotImplemented;
     return scalar(0);
@@ -101,8 +109,12 @@ mu(const scalar p, const scalar T) const
 
 
 template<class Thermo>
-inline Foam::scalar Foam::exponentialSolidTransport<Thermo>::
-alphah(const scalar p, const scalar T) const
+inline Foam::scalar Foam::exponentialSolidTransport<Thermo>::alphah
+(
+    const scalar p, 
+    const scalar T, 
+    const scalar cure
+) const
 {
     return kappa(p, T)/this->Cp(p, T);
 }

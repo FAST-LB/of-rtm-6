@@ -90,7 +90,12 @@ class UList
         //  for the default assignment to be either.  The solution is to
         //  disallow default assignment and provide separate 'shallowCopy' and
         //  'deepCopy' member functions
-        void operator=(const UList<T>&) = delete;
+        //void operator=(const UList<T>&) = delete;
+ protected:
+     
+        //- Reset the list without changing the base pointer
+        //  Used in Sublist slicing.  HJ, 19/Oct/2008
+        void reset(T* __restrict__ v, label size);
 
 
 public:

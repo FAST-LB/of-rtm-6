@@ -66,14 +66,14 @@ Foam::constAnIsoSolidTransport<Thermo>::New
 
 template<class Thermo>
 inline Foam::scalar Foam::constAnIsoSolidTransport<Thermo>::
-kappa(const scalar p, const scalar T) const
+kappa(const scalar p, const scalar T, const scalar cure) const
 {
     return mag(kappa_);
 }
 
 template<class Thermo>
 inline Foam::vector Foam::constAnIsoSolidTransport<Thermo>::
-Kappa(const scalar p, const scalar T) const
+Kappa(const scalar p, const scalar T, const scalar cure) const
 {
     return kappa_;
 }
@@ -81,7 +81,7 @@ Kappa(const scalar p, const scalar T) const
 
 template<class Thermo>
 inline Foam::scalar Foam::constAnIsoSolidTransport<Thermo>::
-mu(const scalar p, const scalar T) const
+mu(const scalar p, const scalar T, const scalar cure) const
 {
     NotImplemented;
     return scalar(0);
@@ -90,7 +90,7 @@ mu(const scalar p, const scalar T) const
 
 template<class Thermo>
 inline Foam::vector Foam::constAnIsoSolidTransport<Thermo>::
-alphah(const scalar p, const scalar T) const
+alphah(const scalar p, const scalar T, const scalar cure) const
 {
     return kappa_/this->Cp(p, T);
 }

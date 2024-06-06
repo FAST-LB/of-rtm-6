@@ -25,6 +25,8 @@ License
 
 #include "triSurfaceSearch.H"
 #include "triSurface.H"
+#include "indexedOctree.H"
+#include "treeDataTriSurface.H"
 #include "PatchTools.H"
 #include "volumeType.H"
 
@@ -254,21 +256,33 @@ Foam::boolList Foam::triSurfaceSearch::calcInside
 
     forAll(samples, sampleI)
     {
-        const point& sample = samples[sampleI];
+        inside[sampleI] = calcInside(samples[sampleI]);
+    }
 
-        if (!tree().bb().contains(sample))
+    return inside;
+}
+
+// Determine inside/outside for samples
+bool Foam::triSurfaceSearch::calcInside
+(
+    const point& sample
+) const
+{
+    bool inside(false);
+    
+       if (!tree().bb().contains(sample))
         {
-            inside[sampleI] = false;
+            inside = false;
         }
         else if (tree().getVolumeType(sample) == volumeType::INSIDE)
         {
-            inside[sampleI] = true;
+            inside = true;
         }
         else
         {
-            inside[sampleI] = false;
-        }
-    }
+            inside = false;
+        } 
+        
     return inside;
 }
 

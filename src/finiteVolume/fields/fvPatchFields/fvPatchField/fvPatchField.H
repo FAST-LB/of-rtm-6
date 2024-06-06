@@ -106,6 +106,19 @@ class fvPatchField
         //  patch type as 'patchType'
         word patchType_;
 
+protected:
+        // Protected member functions
+
+        //- Read patch type
+        //  Use for derived types which over-ride dictionary constructor
+        //  in order to read the patch type
+        void readPatchType(const dictionary& dict);
+
+        //- Set patch type
+        //  Use for derived types which over-ride dictionary constructor
+        //  in order to read the patch type
+        void setPatchType(const fvPatchField<Type>& ptf);
+
 
 public:
 
@@ -395,6 +408,13 @@ public:
                 const fvPatchField<Type>&,
                 const labelList&
             );
+            
+            //- Update on mesh motion
+            //  This function is used for special conditions such as
+            //  immersed boundary which need to be updated when the mesh
+            //  is moving (as opposed to topo change update)
+            virtual void updateOnMotion()
+            {}
 
 
         // Evaluation functions

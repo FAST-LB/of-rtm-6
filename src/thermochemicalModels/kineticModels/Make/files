@@ -1,0 +1,8 @@
+kineticModel/kineticModel.C
+kineticModel/kineticModelNew.C
+kineticModel/kineticModelList.C
+kineticModel/IOkineticModelList.C
+KamalMalkin/KamalMalkin.C
+Grindling/Grindling.C
+
+LIB = $(FOAM_LIBBIN)/libkineticModels

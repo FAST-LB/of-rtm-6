@@ -30,6 +30,7 @@ License
 #include "treeBoundBox.H"
 #include "treeDataFace.H"
 #include "addToRunTimeSelectionTable.H"
+#include "scalar.H"
 
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
@@ -233,6 +234,35 @@ Foam::patchProbes::patchProbes
 Foam::patchProbes::~patchProbes()
 {}
 
+Foam::tmp<Foam::Field<Foam::scalar>> Foam::patchProbes::sampleAndReturn
+(
+    const GeometricField<scalar, fvPatchField, volMesh>& vField
+)
+{
+    tmp<Field<scalar>> values(sample(vField));
+
+    return values;
+}
+
+Foam::tmp<Foam::Field<Foam::symmTensor>> Foam::patchProbes::sampleAndReturn
+(
+    const GeometricField<symmTensor, fvPatchField, volMesh>& vField
+)
+{
+    tmp<Field<symmTensor>> values(sample(vField));
+
+    return values;
+}
+
+Foam::tmp<Foam::Field<Foam::vector>> Foam::patchProbes::sampleAndReturn
+(
+    const GeometricField<vector, fvPatchField, volMesh>& vField
+)
+{
+    tmp<Field<vector>> values(sample(vField));
+
+    return values;
+}
 
 bool Foam::patchProbes::write()
 {

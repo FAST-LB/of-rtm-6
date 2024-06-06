@@ -134,6 +134,12 @@ bool Foam::cellZone::checkDefinition(const bool report) const
 }
 
 
+void Foam::cellZone::updateMesh()
+{
+    clearAddressing();
+}
+
+
 void Foam::cellZone::writeDict(Ostream& os) const
 {
     os  << nl << name() << nl << token::BEGIN_BLOCK << nl

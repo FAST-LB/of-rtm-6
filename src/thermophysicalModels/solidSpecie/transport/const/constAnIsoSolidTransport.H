@@ -115,16 +115,16 @@ public:
         static const bool isotropic = false;
 
         //- Isotropic thermal conductivity [W/mK]
-        inline scalar kappa(const scalar p, const scalar T) const;
+        inline scalar kappa(const scalar p, const scalar T, const scalar cure) const;
 
         //- Un-isotropic thermal conductivity [W/mK]
-        inline vector Kappa(const scalar p, const scalar T) const;
+        inline vector Kappa(const scalar p, const scalar T, const scalar cure) const;
 
         //- Dynamic viscosity [kg/ms]
-        inline scalar mu(const scalar p, const scalar T) const;
+        inline scalar mu(const scalar p, const scalar T, const scalar cure) const;
 
         //- Thermal diffusivity of enthalpy [kg/ms]
-        inline vector alphah(const scalar p, const scalar T) const;
+        inline vector alphah(const scalar p, const scalar T, const scalar cure) const;
 
 
         //- Write to Ostream

@@ -401,6 +401,11 @@ void Foam::argList::getRootCase()
     }
 }
 
+Foam::stringList::subList Foam::argList::additionalArgs() const
+{
+    return stringList::subList(args_, args_.size() - 1, 1);
+}
+
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 

@@ -46,6 +46,7 @@ Description
 #include "thermo.H"
 #include "sutherlandTransport.H"
 #include "constTransport.H"
+#include "CastroMacoskoTransport.H"
 
 #include "icoPolynomial.H"
 #include "hPolynomialThermo.H"
@@ -68,7 +69,20 @@ namespace Foam
             sensibleEnthalpy
         >
     > constGasHThermoPhysics;
-
+    
+    typedef
+    CastroMacoskoTransport
+    <
+        species::thermo
+        <
+            hConstThermo
+            <
+                perfectGas<specie>
+            >,
+            sensibleEnthalpy
+        >
+    > CastroMacoskoGasHThermoPhysics;
+    
     typedef
     sutherlandTransport
     <
@@ -94,6 +108,19 @@ namespace Foam
             sensibleEnthalpy
         >
     > constIncompressibleGasHThermoPhysics;
+
+    typedef
+    CastroMacoskoTransport
+    <
+        species::thermo
+        <
+            hConstThermo
+            <
+                incompressiblePerfectGas<specie>
+            >,
+            sensibleEnthalpy
+        >
+    > CastroMacoskoIncompressibleGasHThermoPhysics;
 
     typedef
     sutherlandTransport
@@ -164,8 +191,7 @@ namespace Foam
         >
     >
     constHThermoPhysics;
-
-
+    
     // thermo physics types based on sensibleInternalEnergy
     typedef
     constTransport
@@ -179,6 +205,19 @@ namespace Foam
             sensibleInternalEnergy
         >
     > constGasEThermoPhysics;
+    
+    typedef
+    CastroMacoskoTransport
+    <
+        species::thermo
+        <
+            hConstThermo
+            <
+                perfectGas<specie>
+            >,
+            sensibleInternalEnergy
+        >
+    > CastroMacoskoGasEThermoPhysics;
 
     typedef
     sutherlandTransport
@@ -207,6 +246,19 @@ namespace Foam
     > constIncompressibleGasEThermoPhysics;
 
     typedef
+    CastroMacoskoTransport
+    <
+        species::thermo
+        <
+            hConstThermo
+            <
+                incompressiblePerfectGas<specie>
+            >,
+            sensibleInternalEnergy
+        >
+    > CastroMacoskoIncompressibleGasEThermoPhysics;
+
+    typedef
     sutherlandTransport
     <
         species::thermo
@@ -233,7 +285,7 @@ namespace Foam
         >,
         8
     > icoPoly8EThermoPhysics;
-
+    
     typedef
     constTransport
     <

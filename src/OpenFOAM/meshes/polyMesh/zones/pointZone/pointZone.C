@@ -122,6 +122,12 @@ const Foam::pointZoneMesh& Foam::pointZone::zoneMesh() const
     return zoneMesh_;
 }
 
+   
+void Foam::pointZone::updateMesh()
+{
+    clearAddressing();
+}
+
 
 Foam::label Foam::pointZone::whichPoint(const label globalPointID) const
 {

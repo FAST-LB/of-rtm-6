@@ -514,6 +514,20 @@ void Foam::ZoneMesh<ZoneType, MeshType>::movePoints(const pointField& p)
 
 
 template<class ZoneType, class MeshType>
+void Foam::ZoneMesh<ZoneType, MeshType>::updateMesh()
+{
+    this->clearAddressing();
+
+    PtrList<ZoneType>& zones = *this;
+
+    forAll (zones, zoneI)
+    {
+        zones[zoneI].updateMesh();
+    }
+}
+
+
+template<class ZoneType, class MeshType>
 bool Foam::ZoneMesh<ZoneType, MeshType>::writeData(Ostream& os) const
 {
     os  << *this;

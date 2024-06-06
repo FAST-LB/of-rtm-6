@@ -171,6 +171,9 @@ public:
 
         //- Correct zone mesh after moving points
         void movePoints(const pointField&);
+        
+        //- Correct after topology update
+        void updateMesh();
 
         //- writeData member function required by regIOobject
         bool writeData(Ostream&) const;

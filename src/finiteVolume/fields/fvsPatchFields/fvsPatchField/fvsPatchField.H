@@ -330,6 +330,30 @@ public:
                 const fvsPatchField<Type>&,
                 const labelList&
             );
+            
+            //- Update on mesh motion
+            //  This function is used for special conditions such as
+            //  immersed boundary which need to be updated when the mesh
+            //  is moving (as opposed to topo change update)
+            virtual void updateOnMotion()
+            {}
+
+
+        // Evaluation functions
+
+            //- Initialise the evaluation of the patch field
+            virtual void initEvaluate
+            (
+                const Pstream::commsTypes commsType = Pstream::commsTypes::blocking
+            )
+            {}
+
+            //- Evaluate the patch field, sets Updated to false
+            virtual void evaluate
+            (
+                const Pstream::commsTypes commsType = Pstream::commsTypes::blocking
+            )
+            {}
 
 
         //- Write

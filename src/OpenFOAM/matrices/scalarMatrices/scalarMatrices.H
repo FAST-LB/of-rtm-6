@@ -153,13 +153,18 @@ void multiply
     const scalarSquareMatrix& C
 );
 
+//- Return the inverse of matrix A using LU
+scalarSquareMatrix LUinv
+(
+    const scalarSquareMatrix& A
+);
+
 //- Return the inverse of matrix A using SVD
 scalarRectangularMatrix SVDinv
 (
     const scalarRectangularMatrix& A,
     scalar minCondition = 0
 );
-
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2019 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -65,7 +65,7 @@ swirlFlowRateInletVelocityFvPatchVectorField
         dict.lookupOrDefault
         (
             "origin",
-            returnReduce(patch().size(), sumOp<label>())
+            patch().size()
           ? gSum(patch().Cf()*patch().magSf())/gSum(patch().magSf())
           : Zero
         )
@@ -75,7 +75,7 @@ swirlFlowRateInletVelocityFvPatchVectorField
         dict.lookupOrDefault
         (
             "axis",
-            returnReduce(patch().size(), sumOp<label>())
+            patch().size()
           ? -gSum(patch().Sf())/gSum(patch().magSf())
           : Zero
         )

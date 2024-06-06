@@ -161,6 +161,23 @@ public:
 
         //- Find elements containing patchProbes
         virtual void findElements(const fvMesh&);
+        
+        tmp<Field<scalar>> sampleAndReturn
+        (
+            const GeometricField<scalar, fvPatchField, volMesh>& vField
+        );
+        
+        tmp<Field<symmTensor>> sampleAndReturn
+        (
+            const GeometricField<symmTensor, fvPatchField, volMesh>& vField
+        );
+        
+        tmp<Field<vector>> sampleAndReturn
+        (
+            const GeometricField<vector, fvPatchField, volMesh>& vField
+        );
+        
+        
 };
 
 

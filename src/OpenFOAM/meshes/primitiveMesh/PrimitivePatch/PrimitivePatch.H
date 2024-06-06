@@ -58,6 +58,7 @@ SourceFiles
 #include "intersection.H"
 #include "HashSet.H"
 #include "objectHit.H"
+#include "OFstream.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -167,6 +168,9 @@ private:
 
         //- Face centres
         mutable Field<PointType>* faceCentresPtr_;
+        
+        //- Face areas
+        mutable Field<PointType>* faceAreasPtr_;
 
         //- Face unit normals
         mutable Field<PointType>* faceNormalsPtr_;
@@ -209,6 +213,9 @@ private:
 
         //- Calculate face centres
         void calcFaceCentres() const;
+        
+        //- Calculate face areas
+        void calcFaceAreas() const;
 
         //- Calculate unit face normals
         void calcFaceNormals() const;
@@ -383,6 +390,9 @@ public:
 
             //- Return face centres for patch
             const Field<PointType>& faceCentres() const;
+            
+            //- Return face areas for patch.  Avoiding name clash
+            const Field<PointType>& areas() const;
 
             //- Return face normals for patch
             const Field<PointType>& faceNormals() const;
@@ -448,7 +458,28 @@ public:
             const bool report = false,
             labelHashSet* setPtr = nullptr
         ) const;
+        
+        //- Write generic VTK patch, HJ, 14/Jan/2009
+        static void writeVTK
+        (
+            const fileName& name,
+            const FaceListType& faces,
+            const Field<PointType>& points
+        );
 
+        //- Write generic VTK patch normals, HJ, 14/Jan/2009
+        static void writeVTKNormals
+        (
+            const fileName& name,
+            const FaceListType& faces,
+            const Field<PointType>& points
+        );
+
+        //- Write VTK patch
+        void writeVTK(const fileName& name) const;
+
+        //- Write VTK patch normals
+        void writeVTKNormals(const fileName& name) const;
 
     // Edit
 

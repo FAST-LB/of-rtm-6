@@ -297,6 +297,10 @@ public:
 
         //- Update for changes in topology
         virtual void updateMesh(const mapPolyMesh&);
+        
+        //- Correct after topology update.  Note: Zone has been rebuilt
+        //  and no mapping is required.  HJ, 1/Mar/2009
+        void updateMesh();
 
         //- Write
         virtual void write(Ostream&) const;

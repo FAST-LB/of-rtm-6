@@ -62,7 +62,8 @@ Foam::porosityModels::DarcyForchheimer::DarcyForchheimer
 {
     adjustNegativeResistance(dXYZ_);
     adjustNegativeResistance(fXYZ_);
-
+    coordSys_ = coordinateSystem::New(mesh, coeffs_);
+    
     calcTransformModelData();
 }
 
@@ -297,6 +298,26 @@ void Foam::porosityModels::DarcyForchheimer::correct
     }
 }
 
+void Foam::porosityModels::DarcyForchheimer::correct
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask
+) const
+{
+    Info << "WARNING: cellIbMask not implemented!" << endl;
+    correct(UEqn);
+}
+
+void Foam::porosityModels::DarcyForchheimer::correct
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask,
+    const volVectorField& UFibers
+) const
+{
+    Info << "WARNING: cellIbMask and UFibers not implemented!" << endl;
+    correct(UEqn);
+}
 
 bool Foam::porosityModels::DarcyForchheimer::writeData(Ostream& os) const
 {

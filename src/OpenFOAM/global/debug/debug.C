@@ -50,6 +50,7 @@ dictionary* controlDictPtr_(nullptr);
 dictionary* debugSwitchesPtr_(nullptr);
 dictionary* infoSwitchesPtr_(nullptr);
 dictionary* optimisationSwitchesPtr_(nullptr);
+dictionary* tolerancesPtr_(NULL);
 
 // Debug switch read and write callback tables.
 simpleObjectRegistry* debugObjectsPtr_(nullptr);
@@ -175,6 +176,12 @@ Foam::dictionary& Foam::debug::optimisationSwitches()
 }
 
 
+Foam::dictionary& Foam::debug::tolerances()
+{
+    return switchSet("Tolerances", tolerancesPtr_);
+}
+
+
 int Foam::debug::debugSwitch(const char* name, const int defaultValue)
 {
     return debugSwitches().lookupOrAddDefault
@@ -196,6 +203,18 @@ int Foam::debug::infoSwitch(const char* name, const int defaultValue)
 int Foam::debug::optimisationSwitch(const char* name, const int defaultValue)
 {
     return optimisationSwitches().lookupOrAddDefault
+    (
+        name, defaultValue, false, false
+    );
+}
+
+double Foam::debug::tolerances
+(
+    const char* name,
+    const double defaultValue
+)
+{
+    return tolerances().lookupOrAddDefault
     (
         name, defaultValue, false, false
     );

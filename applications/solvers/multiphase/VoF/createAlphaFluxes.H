@@ -4,7 +4,7 @@ IOobject alphaPhi10Header
     runTime.timeName(),
     mesh,
     IOobject::READ_IF_PRESENT,
-    IOobject::AUTO_WRITE
+    IOobject::NO_WRITE
 );
 
 const bool alphaRestart = alphaPhi10Header.typeHeaderOk<surfaceScalarField>();

@@ -391,6 +391,7 @@ $(procFacesGAMGProcAgglomeration)/procFacesGAMGProcAgglomeration.C
 
 meshes/lduMesh/lduMesh.C
 meshes/lduMesh/lduPrimitiveMesh.C
+meshes/MeshObject/meshObjectBase.C
 
 LduMatrix = matrices/LduMatrix
 $(LduMatrix)/LduMatrix/lduMatrices.C

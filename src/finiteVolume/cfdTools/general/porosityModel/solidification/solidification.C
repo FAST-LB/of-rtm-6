@@ -112,6 +112,26 @@ void Foam::porosityModels::solidification::correct
     }
 }
 
+void Foam::porosityModels::solidification::correct
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask
+) const
+{
+    Info << "WARNING: cellIbMask not implemented!" << endl;
+    correct(UEqn);
+}
+
+void Foam::porosityModels::solidification::correct
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask,
+    const volVectorField& UFibers
+) const
+{
+    Info << "WARNING: cellIbMask and UFibers not implemented!" << endl;
+    correct(UEqn);
+}
 
 void Foam::porosityModels::solidification::correct
 (

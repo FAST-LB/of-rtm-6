@@ -1,0 +1,42 @@
+/*---------------------------------------------------------------------------*\
+|       OpenFoam mesh file generated using HyperMesh Version: 2017.3.0.17     |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+4
+(
+    top
+    {
+        type            patch;
+        nFaces          14314;
+        startFace       28336;
+    }
+    inlet
+    {
+        type            wall;
+        nFaces          24;
+        startFace       42650;
+    }
+    boundary
+    {
+        type            patch;
+        nFaces          568;
+        startFace       42674;
+    }
+    bottom
+    {
+        type            patch;
+        nFaces          14338;
+        startFace       43242;
+    }
+)
+
+// ************************************************************************* //

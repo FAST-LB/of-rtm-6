@@ -166,6 +166,7 @@ $(derivedFvPatchFields)/mappedVelocityFluxFixedValue/mappedVelocityFluxFixedValu
 $(derivedFvPatchFields)/matchedFlowRateOutletVelocity/matchedFlowRateOutletVelocityFvPatchVectorField.C
 $(derivedFvPatchFields)/noSlip/noSlipFvPatchVectorField.C
 $(derivedFvPatchFields)/movingWallVelocity/movingWallVelocityFvPatchVectorField.C
+$(derivedFvPatchFields)/movingWallSlip/movingWallSlipFvPatchVectorField.C
 $(derivedFvPatchFields)/outletInlet/outletInletFvPatchFields.C
 $(derivedFvPatchFields)/outletMappedUniformInlet/outletMappedUniformInletFvPatchFields.C
 $(derivedFvPatchFields)/fixedMeanOutletInlet/fixedMeanOutletInletFvPatchFields.C
@@ -443,7 +444,14 @@ $(porosity)/porosityModel/IOporosityModelList.C
 $(porosity)/DarcyForchheimer/DarcyForchheimer.C
 $(porosity)/fixedCoeff/fixedCoeff.C
 $(porosity)/powerLaw/powerLaw.C
-$(porosity)/solidification/solidification.C
+$(porosity)/fiberDarcyForchheimer/fiberDarcyForchheimer.C
+$(porosity)/fiberDarcyForchheimer/permeabilityLaw.C
+$(porosity)/fiberDarcyForchheimer/newPermeabilityLaw.C
+$(porosity)/fiberDarcyForchheimer/Gebart/Gebart.C
+$(porosity)/fiberDarcyForchheimer/tabularData/tabularData.C
+$(porosity)/fiberDarcyForchheimer/exponentialFunction/exponentialFunction.C
+$(porosity)/fiberDarcyForchheimer/powerLawFunction/powerLawFunction.C
+$(porosity)/fiberDarcyForchheimer/HeleShaw/HeleShaw.C
 
 MRF = $(general)/MRF
 $(MRF)/MRFZone.C

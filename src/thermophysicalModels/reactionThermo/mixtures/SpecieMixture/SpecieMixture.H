@@ -156,7 +156,8 @@ public:
             (
                 const label speciei,
                 const scalar p,
-                const scalar T
+                const scalar T,
+                const scalar cure
             ) const;
 
             //- Thermal conductivity [W/m/K]
@@ -164,7 +165,8 @@ public:
             (
                 const label speciei,
                 const scalar p,
-                const scalar T
+                const scalar T,
+                const scalar cure
             ) const;
 
             //- Thermal diffusivity of enthalpy [kg/m/s]
@@ -172,7 +174,8 @@ public:
             (
                 const label speciei,
                 const scalar p,
-                const scalar T
+                const scalar T,
+                const scalar cure
             ) const;
 
             //- Density [kg/m3]

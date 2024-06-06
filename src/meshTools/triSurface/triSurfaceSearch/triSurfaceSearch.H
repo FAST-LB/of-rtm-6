@@ -142,6 +142,8 @@ public:
 
         //- Calculate for each searchPoint inside/outside status.
         boolList calcInside(const pointField& searchPoints) const;
+        
+        bool calcInside(const point& searchPoint) const;
 
         void findNearest
         (

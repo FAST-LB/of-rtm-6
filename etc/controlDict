@@ -81,6 +81,10 @@ OptimisationSwitches
     stopAtWriteNowSignal        -1;
 }
 
+Tolerances
+{
+    
+}
 
 DebugSwitches
 {

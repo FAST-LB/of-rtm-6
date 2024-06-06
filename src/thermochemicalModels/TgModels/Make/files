@@ -1,0 +1,8 @@
+TgModel/TgModel.C
+TgModel/TgModelNew.C
+TgModel/TgModelList.C
+TgModel/IOTgModelList.C
+DiBenedetto/DiBenedetto.C
+regressionModel/regressionModel.C
+
+LIB = $(FOAM_LIBBIN)/libTgModels

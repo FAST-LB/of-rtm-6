@@ -320,6 +320,39 @@ void Foam::multiply
     }
 }
 
+Foam::scalarSquareMatrix Foam::LUinv
+(
+    const scalarSquareMatrix& A
+)
+{
+    scalarSquareMatrix luMatrix = A;
+
+    scalarSquareMatrix luInvert(luMatrix.m());
+    scalarField column(luMatrix.m());
+
+    labelList pivotIndices(luMatrix.m());
+
+    LUDecompose(luMatrix, pivotIndices);
+
+    for (label j = 0; j < luMatrix.m(); j++)
+    {
+        for (label i = 0; i < luMatrix.m(); i++)
+        {
+            column[i] = 0.0;
+        }
+
+        column[j] = 1.0;
+
+        LUBacksubstitute(luMatrix, pivotIndices, column);
+
+        for (label i = 0; i < luMatrix.m(); i++)
+        {
+            luInvert[i][j] = column[i];
+        }
+    }
+
+    return luInvert;
+}
 
 Foam::scalarRectangularMatrix Foam::SVDinv
 (

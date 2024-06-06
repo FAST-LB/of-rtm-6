@@ -118,6 +118,7 @@ Foam::porosityModels::fixedCoeff::fixedCoeff
 {
     adjustNegativeResistance(alphaXYZ_);
     adjustNegativeResistance(betaXYZ_);
+    coordSys_ = coordinateSystem::New(mesh, coeffs_);
 
     calcTransformModelData();
 }
@@ -222,6 +223,26 @@ void Foam::porosityModels::fixedCoeff::correct
     apply(Udiag, Usource, V, U, rho);
 }
 
+void Foam::porosityModels::fixedCoeff::correct
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask
+) const
+{
+    Info << "WARNING: cellIbMask not implemented!" << endl;
+    correct(UEqn);
+}
+
+void Foam::porosityModels::fixedCoeff::correct
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask,
+    const volVectorField& UFibers
+) const
+{
+    Info << "WARNING: cellIbMask and UFibers not implemented!" << endl;
+    correct(UEqn);
+}
 
 void Foam::porosityModels::fixedCoeff::correct
 (

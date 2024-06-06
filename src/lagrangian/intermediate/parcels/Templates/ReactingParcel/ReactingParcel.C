@@ -353,8 +353,8 @@ void Foam::ReactingParcel<ParcelType>::correctSurfaceValues
         const scalar cbrtW = cbrt(W);
 
         rhos += Xs[i]*W;
-        mus += Ys[i]*sqrtW*thermo.carrier().mu(i, td.pc(), T);
-        kappas += Ys[i]*cbrtW*thermo.carrier().kappa(i, td.pc(), T);
+        mus += Ys[i]*sqrtW*thermo.carrier().mu(i, td.pc(), T, 0.0);
+        kappas += Ys[i]*cbrtW*thermo.carrier().kappa(i, td.pc(), T, 0.0);
         Cps += Xs[i]*thermo.carrier().Cp(i, td.pc(), T);
 
         sumYiSqrtW += Ys[i]*sqrtW;

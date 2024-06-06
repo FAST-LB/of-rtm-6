@@ -25,6 +25,11 @@ License
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+inline Foam::label Foam::pimpleLoop::corrPimple() const
+{
+    return corrPimple_;
+}
+
 inline Foam::label Foam::pimpleLoop::nCorrPimple() const
 {
     return nCorrPimple_;

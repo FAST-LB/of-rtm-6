@@ -122,6 +122,13 @@ bool Foam::porosityModelList::writeData(Ostream& os) const
     return os.good();
 }
 
+void Foam::porosityModelList::transformModelData()
+{
+    forAll(*this, i)
+    {
+        this->operator[](i).transformModelData();
+    }
+}
 
 void Foam::porosityModelList::addResistance
 (
@@ -131,6 +138,31 @@ void Foam::porosityModelList::addResistance
     forAll(*this, i)
     {
         this->operator[](i).addResistance(UEqn);
+    }
+}
+
+void Foam::porosityModelList::addResistance
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask
+)
+{
+    forAll(*this, i)
+    {
+        this->operator[](i).addResistance(UEqn, cellIbMask);
+    }
+}
+
+void Foam::porosityModelList::addResistance
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask,
+    const volVectorField& UFibers
+)
+{
+    forAll(*this, i)
+    {
+        this->operator[](i).addResistance(UEqn, cellIbMask,UFibers);
     }
 }
 

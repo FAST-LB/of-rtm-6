@@ -28,6 +28,16 @@ License
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
+// Construct from mesh.  No morphing data: the mesh has not changed
+// HJ, 27/Nov/2009
+Foam::mapPolyMesh::mapPolyMesh(const polyMesh& mesh)
+:
+    mesh_(mesh),    
+    nOldPoints_(mesh.nPoints()),
+    nOldFaces_(mesh.nFaces()),
+    nOldCells_(mesh.nCells())
+{}
+
 Foam::mapPolyMesh::mapPolyMesh
 (
     const polyMesh& mesh,

@@ -169,10 +169,11 @@ Foam::scalar Foam::SpecieMixture<MixtureType>::mu
 (
     const label speciei,
     const scalar p,
-    const scalar T
+    const scalar T,
+    const scalar cure
 ) const
 {
-    return this->getLocalThermo(speciei).mu(p, T);
+    return this->getLocalThermo(speciei).mu(p, T, cure);
 }
 
 
@@ -181,10 +182,11 @@ Foam::scalar Foam::SpecieMixture<MixtureType>::kappa
 (
     const label speciei,
     const scalar p,
-    const scalar T
+    const scalar T,
+    const scalar cure
 ) const
 {
-    return this->getLocalThermo(speciei).kappa(p, T);
+    return this->getLocalThermo(speciei).kappa(p, T, cure);
 }
 
 
@@ -193,10 +195,11 @@ Foam::scalar Foam::SpecieMixture<MixtureType>::alphah
 (
     const label speciei,
     const scalar p,
-    const scalar T
+    const scalar T,
+    const scalar cure
 ) const
 {
-    return this->getLocalThermo(speciei).alphah(p, T);
+    return this->getLocalThermo(speciei).alphah(p, T, cure);
 }
 
 

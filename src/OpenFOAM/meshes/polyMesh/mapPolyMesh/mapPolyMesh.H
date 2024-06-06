@@ -282,6 +282,9 @@ class mapPolyMesh
 public:
 
     // Constructors
+    
+        //- Construct empty: no update
+        mapPolyMesh(const polyMesh& mesh);
 
         //- Construct from components. Copy (except for oldCellVolumes).
         mapPolyMesh

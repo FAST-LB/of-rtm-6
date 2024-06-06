@@ -101,7 +101,7 @@ Foam::porosityModel::porosityModel
     active_(true),
     zoneName_(cellZoneName),
     cellZoneIDs_(),
-    coordSys_(coordinateSystem::New(mesh, coeffs_))
+    coordSys_()
 {
     if (zoneName_ == word::null)
     {
@@ -144,7 +144,6 @@ void Foam::porosityModel::transformModelData()
     }
 }
 
-
 Foam::tmp<Foam::vectorField> Foam::porosityModel::porosityModel::force
 (
     const volVectorField& U,
@@ -176,6 +175,27 @@ void Foam::porosityModel::addResistance(fvVectorMatrix& UEqn)
     this->correct(UEqn);
 }
 
+void Foam::porosityModel::addResistance(fvVectorMatrix& UEqn, const volScalarField& cellIbMask)
+{
+    if (cellZoneIDs_.empty())
+    {
+        return;
+    }
+
+    transformModelData();
+    this->correct(UEqn, cellIbMask);
+}
+
+void Foam::porosityModel::addResistance(fvVectorMatrix& UEqn, const volScalarField& cellIbMask, const volVectorField& UFibers)
+{
+    if (cellZoneIDs_.empty())
+    {
+        return;
+    }
+
+    transformModelData();
+    this->correct(UEqn, cellIbMask, UFibers);
+}
 
 void Foam::porosityModel::addResistance
 (

@@ -355,6 +355,56 @@ template
 >
 void
 Foam::PrimitivePatch<Face, FaceList, PointField, PointType>::
+calcFaceAreas() const
+{
+    if (debug)
+    {
+        Pout<< "PrimitivePatch<Face, FaceList, PointField, PointType>::"
+               "calcFaceAreas() : "
+               "calculating faceAreas in PrimitivePatch"
+            << endl;
+    }
+
+    // It is considered an error to attempt to recalculate faceAreas
+    // if they have already been calculated.
+    if (faceAreasPtr_)
+    {
+        FatalErrorIn
+        (
+            "PrimitivePatch<Face, FaceList, PointField, PointType>::"
+            "calcFaceAreas()"
+        )   << "faceAreasPtr_ already allocated"
+            << abort(FatalError);
+    }
+
+    faceAreasPtr_ = new Field<PointType>(this->size());
+
+    Field<PointType>& n = *faceAreasPtr_;
+
+    forAll (n, faceI)
+    {
+        n[faceI] = this->operator[](faceI).normal(points_);
+    }
+
+    if (debug)
+    {
+        Pout<< "PrimitivePatch<Face, FaceList, PointField, PointType>::"
+               "calcFaceAreas() : "
+               "finished calculating faceAreas in PrimitivePatch"
+            << endl;
+    }
+}
+
+
+template
+<
+    class Face,
+    template<class> class FaceList,
+    class PointField,
+    class PointType
+>
+void
+Foam::PrimitivePatch<Face, FaceList, PointField, PointType>::
 calcFaceNormals() const
 {
     if (debug)

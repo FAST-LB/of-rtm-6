@@ -1,0 +1,125 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v3.0+                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+defaultFieldValues
+(
+    volVectorFieldValue drapeDirection (1 0 0)
+    //volScalarFieldValue fiberVolFraction 0	
+);
+
+regions
+(
+	
+	boxToCell
+	{
+		box (0 0 -1) (1 1 1);
+        fieldValues
+        (
+            volVectorFieldValue drapeDirection (0.707 0.707 0)
+        );
+	}
+	boxToCell
+	{
+		box (0 -1 -1) (1 0 1);
+        fieldValues
+        (
+            volVectorFieldValue drapeDirection (0 1 0)
+        );
+	}
+	boxToCell
+	{
+		box (-1 0 -1) (0 1 1);
+        fieldValues
+        (
+            volVectorFieldValue drapeDirection (-0.707 0.707 0)
+        );
+	}
+	/*
+	zoneToCell
+	{
+		name layer1;
+        fieldValues
+        (
+            volScalarFieldValue fiberVolFraction 0.33333
+        );
+	}
+	
+	zoneToCell
+	{
+		name layer2;
+        fieldValues
+        (
+            volScalarFieldValue fiberVolFraction 0.3333
+        );
+	}
+	zoneToCell
+	{
+		name layer3;
+        fieldValues
+        (
+            volScalarFieldValue fiberVolFraction 0.5
+        );
+	}
+	/*
+	zoneToCell
+	{
+		name layer1;
+		fieldValues
+        (
+            volScalarFieldValue fiberVolFraction 0.5
+        );
+	}
+	
+	zoneToCell
+	{
+		name layer2;
+		fieldValues
+        (
+            volScalarFieldValue fiberVolFraction 0.3333
+        );
+	}
+	boxToCell
+	{
+		box (-1 -1 -1) (1 0.1 1);
+        fieldValues
+        (
+            volScalarFieldValue fiberVolFraction 0.4
+        );
+	}
+	
+	boxToCell
+	{
+		box (-1 -1 -1) (0.1 0.1 1);
+        fieldValues
+        (
+            volScalarFieldValue fiberVolFraction 0.7
+        );
+	}
+	
+	boxToCell
+	{
+		box (0.1 0.1 -1) (1 1 1);
+        fieldValues
+        (
+            volScalarFieldValue fiberVolFraction 0.5
+        );
+	}
+	*/
+);
+
+
+// ************************************************************************* //

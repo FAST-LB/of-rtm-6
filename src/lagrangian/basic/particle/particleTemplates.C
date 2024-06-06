@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2019 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -108,33 +108,6 @@ void Foam::particle::hitFace
     trackingData& td
 )
 {
-    if (debug)
-    {
-        Info << "Particle " << origId() << nl << FUNCTION_NAME << nl << endl;
-    }
-
-    if (onBoundaryFace())
-    {
-        changeToMasterPatch();
-    }
-
-    hitFaceNoChangeToMasterPatch(direction, cloud, td);
-}
-
-
-template<class TrackCloudType>
-void Foam::particle::hitFaceNoChangeToMasterPatch
-(
-    const vector& direction,
-    TrackCloudType& cloud,
-    trackingData& td
-)
-{
-    if (debug)
-    {
-        Info << "Particle " << origId() << nl << FUNCTION_NAME << nl << endl;
-    }
-
     typename TrackCloudType::particleType& p =
         static_cast<typename TrackCloudType::particleType&>(*this);
     typename TrackCloudType::particleType::trackingData& ttd =
@@ -150,6 +123,8 @@ void Foam::particle::hitFaceNoChangeToMasterPatch
     }
     else if (onBoundaryFace())
     {
+        changeToMasterPatch();
+
         if (!p.hitPatch(cloud, ttd))
         {
             const polyPatch& patch = mesh_.boundaryMesh()[p.patch()];
@@ -417,7 +392,7 @@ void Foam::particle::hitCyclicACMIPatch
         // Move to the face associated with the non-overlap patch and redo the
         // face interaction.
         tetFacei_ = facei_ = cpp.nonOverlapPatch().start() + localFacei;
-        hitFaceNoChangeToMasterPatch(direction, cloud, td);
+        hitFace(direction, cloud, td);
     }
 }
 

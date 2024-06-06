@@ -113,6 +113,27 @@ void Foam::porosityModels::powerLaw::correct
     }
 }
 
+void Foam::porosityModels::powerLaw::correct
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask
+) const
+{
+    Info << "WARNING: cellIbMask not implemented!" << endl;
+    correct(UEqn);
+}
+
+void Foam::porosityModels::powerLaw::correct
+(
+    fvVectorMatrix& UEqn,
+    const volScalarField& cellIbMask,
+    const volVectorField& UFibers
+) const
+{
+    Info << "WARNING: cellIbMask and UFibers not implemented!" << endl;
+    correct(UEqn);
+}
+
 
 void Foam::porosityModels::powerLaw::correct
 (

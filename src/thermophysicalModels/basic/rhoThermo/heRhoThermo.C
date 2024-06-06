@@ -32,6 +32,7 @@ void Foam::heRhoThermo<BasicPsiThermo, MixtureType>::calculate()
 {
     const scalarField& hCells = this->he();
     const scalarField& pCells = this->p_;
+    const scalarField& cureCells = this->cure_;
 
     scalarField& TCells = this->T_.primitiveFieldRef();
     scalarField& psiCells = this->psi_.primitiveFieldRef();
@@ -54,12 +55,15 @@ void Foam::heRhoThermo<BasicPsiThermo, MixtureType>::calculate()
         psiCells[celli] = mixture_.psi(pCells[celli], TCells[celli]);
         rhoCells[celli] = mixture_.rho(pCells[celli], TCells[celli]);
 
-        muCells[celli] = mixture_.mu(pCells[celli], TCells[celli]);
-        alphaCells[celli] = mixture_.alphah(pCells[celli], TCells[celli]);
+        muCells[celli] = mixture_.mu(pCells[celli], TCells[celli], cureCells[celli]);
+        alphaCells[celli] = mixture_.alphah(pCells[celli], TCells[celli], cureCells[celli]);
     }
 
     volScalarField::Boundary& pBf =
         this->p_.boundaryFieldRef();
+
+    volScalarField::Boundary& cureBf =
+        this->cure_.boundaryFieldRef();
 
     volScalarField::Boundary& TBf =
         this->T_.boundaryFieldRef();
@@ -82,6 +86,7 @@ void Foam::heRhoThermo<BasicPsiThermo, MixtureType>::calculate()
     forAll(this->T_.boundaryField(), patchi)
     {
         fvPatchScalarField& pp = pBf[patchi];
+        fvPatchScalarField& pcure = cureBf[patchi];
         fvPatchScalarField& pT = TBf[patchi];
         fvPatchScalarField& ppsi = psiBf[patchi];
         fvPatchScalarField& prho = rhoBf[patchi];
@@ -100,8 +105,8 @@ void Foam::heRhoThermo<BasicPsiThermo, MixtureType>::calculate()
 
                 ppsi[facei] = mixture_.psi(pp[facei], pT[facei]);
                 prho[facei] = mixture_.rho(pp[facei], pT[facei]);
-                pmu[facei] = mixture_.mu(pp[facei], pT[facei]);
-                palpha[facei] = mixture_.alphah(pp[facei], pT[facei]);
+                pmu[facei] = mixture_.mu(pp[facei], pT[facei], pcure[facei]);
+                palpha[facei] = mixture_.alphah(pp[facei], pT[facei], pcure[facei]);
             }
         }
         else
@@ -115,8 +120,8 @@ void Foam::heRhoThermo<BasicPsiThermo, MixtureType>::calculate()
 
                 ppsi[facei] = mixture_.psi(pp[facei], pT[facei]);
                 prho[facei] = mixture_.rho(pp[facei], pT[facei]);
-                pmu[facei] = mixture_.mu(pp[facei], pT[facei]);
-                palpha[facei] = mixture_.alphah(pp[facei], pT[facei]);
+                pmu[facei] = mixture_.mu(pp[facei], pT[facei], pcure[facei]);
+                palpha[facei] = mixture_.alphah(pp[facei], pT[facei], pcure[facei]);
             }
         }
     }

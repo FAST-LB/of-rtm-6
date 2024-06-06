@@ -1,11 +1,6 @@
-#                            -*- mode: org; -*-
-#
-#+TITLE:     README for [[http://openfoam.org/version/6][OpenFOAM-6]]
-#+AUTHOR:               The OpenFOAM Foundation
-#+DATE:                     10th July 2018
-#+LINK:                  http://openfoam.org
-#+OPTIONS: author:nil ^:{}
-# Copyright (c) 2015-2018 OpenFOAM Foundation.
+* [[https://git.scc.kit.edu/FAST-LT-INTERNAL/OF-RTM-dev/-/wikis/OF-RTM-Wiki-Home][OF-RTM Wiki]]
+
+* README for [[http://openfoam.org/version/6][OpenFOAM-6]]
 
 * About OpenFOAM
   OpenFOAM is a free, open source computational fluid dynamics (CFD) software

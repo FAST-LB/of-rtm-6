@@ -81,7 +81,8 @@ template<class Thermo, int PolySize>
 inline Foam::scalar Foam::polynomialSolidTransport<Thermo, PolySize>::mu
 (
     const scalar p,
-    const scalar T
+    const scalar T, 
+    const scalar cure
 ) const
 {
     NotImplemented;
@@ -93,7 +94,8 @@ template<class Thermo, int PolySize>
 inline Foam::scalar Foam::polynomialSolidTransport<Thermo, PolySize>::kappa
 (
     const scalar p,
-    const scalar T
+    const scalar T, 
+    const scalar cure
 ) const
 {
     return kappaCoeffs_.value(T);
@@ -104,7 +106,8 @@ template<class Thermo, int PolySize>
 inline Foam::vector Foam::polynomialSolidTransport<Thermo, PolySize>::Kappa
 (
     const scalar p,
-    const scalar T
+    const scalar T, 
+    const scalar cure
 ) const
 {
     const scalar kappa(kappaCoeffs_.value(T));
@@ -115,7 +118,9 @@ inline Foam::vector Foam::polynomialSolidTransport<Thermo, PolySize>::Kappa
 template<class Thermo, int PolySize>
 inline Foam::scalar Foam::polynomialSolidTransport<Thermo, PolySize>::alphah
 (
-    const scalar p, const scalar T
+    const scalar p, 
+    const scalar T, 
+    const scalar cure
 ) const
 {
     return kappa(p, T)/this->Cp(p, T);

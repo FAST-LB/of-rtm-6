@@ -1,0 +1,3 @@
+RTMFoam.C
+
+EXE = $(FOAM_APPBIN)/RTMFoam

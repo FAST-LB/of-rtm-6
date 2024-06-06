@@ -83,7 +83,8 @@ template<class Thermo>
 inline Foam::scalar Foam::constTransport<Thermo>::mu
 (
     const scalar p,
-    const scalar T
+    const scalar T,
+    const scalar cure
 ) const
 {
     return mu_;
@@ -94,10 +95,11 @@ template<class Thermo>
 inline Foam::scalar Foam::constTransport<Thermo>::kappa
 (
     const scalar p,
-    const scalar T
+    const scalar T,
+    const scalar cure
 ) const
 {
-    return this->Cp(p, T)*mu(p, T)*rPr_;
+    return this->Cp(p, T)*mu(p, T, cure)*rPr_;
 }
 
 
@@ -105,11 +107,15 @@ template<class Thermo>
 inline Foam::scalar Foam::constTransport<Thermo>::alphah
 (
     const scalar p,
-    const scalar T
+    const scalar T,
+    const scalar cure
 ) const
 {
-    return mu(p, T)*rPr_;
+    return mu(p, T, cure)*rPr_;
 }
+
+
+
 
 
 // * * * * * * * * * * * * * * * Member Operators  * * * * * * * * * * * * * //

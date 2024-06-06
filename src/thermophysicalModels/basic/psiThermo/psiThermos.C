@@ -37,6 +37,7 @@ License
 #include "thermo.H"
 
 #include "constTransport.H"
+#include "CastroMacoskoTransport.H"
 #include "sutherlandTransport.H"
 
 #include "hPolynomialThermo.H"
@@ -158,6 +159,18 @@ makeThermos
     psiThermo,
     hePsiThermo,
     pureMixture,
+    CastroMacoskoTransport,
+    sensibleInternalEnergy,
+    eConstThermo,
+    perfectGas,
+    specie
+);
+
+makeThermos
+(
+    psiThermo,
+    hePsiThermo,
+    pureMixture,
     sutherlandTransport,
     sensibleInternalEnergy,
     eConstThermo,
@@ -171,6 +184,18 @@ makeThermos
     hePsiThermo,
     pureMixture,
     constTransport,
+    sensibleInternalEnergy,
+    hConstThermo,
+    perfectGas,
+    specie
+);
+
+makeThermos
+(
+    psiThermo,
+    hePsiThermo,
+    pureMixture,
+    CastroMacoskoTransport,
     sensibleInternalEnergy,
     hConstThermo,
     perfectGas,

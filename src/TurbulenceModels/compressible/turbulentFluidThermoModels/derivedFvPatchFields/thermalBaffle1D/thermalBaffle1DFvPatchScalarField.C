@@ -388,7 +388,7 @@ void thermalBaffle1DFvPatchScalarField<solidType>::updateCoeffs()
         scalarField kappas(patch().size(), 0.0);
         forAll(kappas, i)
         {
-            kappas[i] = solid().kappa(0.0, (Tp[i] + nbrTp[i])/2.0);
+            kappas[i] = solid().kappa(0.0, (Tp[i] + nbrTp[i])/2.0, 0.0);
         }
 
         scalarField KDeltaSolid(kappas/baffleThickness());

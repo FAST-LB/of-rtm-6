@@ -144,13 +144,13 @@ public:
         // Physical properties
 
             //- Liquid viscosity [Pa s]
-            inline scalar mu(scalar p, scalar T) const;
+            inline scalar mu(scalar p, scalar T, scalar cure) const;
 
             //- Liquid thermal conductivity  [W/(m K)]
-            inline scalar kappa(scalar p, scalar T) const;
+            inline scalar kappa(scalar p, scalar T, scalar cure) const;
 
             //- Liquid thermal diffusivity of enthalpy [kg/ms]
-            inline scalar alphah(const scalar p, const scalar T) const;
+            inline scalar alphah(const scalar p, const scalar T, scalar cure) const;
 };
 
 

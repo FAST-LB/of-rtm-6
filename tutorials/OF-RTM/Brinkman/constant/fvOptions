@@ -1,0 +1,78 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+/*
+injector1
+{
+    active          true;
+    timeStart       0;
+    duration        5;
+    selectionMode   cellZone;
+    cellZone		layer1;
+}
+
+options
+{  
+    massSource1
+    {
+        type            scalarSemiImplicitSource;
+
+        scalarSemiImplicitSourceCoeffs
+        {
+			$injector1;
+            volumeMode      absolute;
+            injectionRateSuSp
+            {
+                rho     		(1e-3 0); // (kg/s kg/s/m^3)
+				//alpha.mesamoll 	(1 0);
+            }
+        }
+    }
+
+    momentumSource1
+    {
+        type            vectorSemiImplicitSource;
+
+        vectorSemiImplicitSourceCoeffs
+        {
+			$injector1;
+            volumeMode      absolute;
+            injectionRateSuSp
+            {
+                U           ((0 -1e-2 0) 0); // kg*m/s^2
+            }
+        }
+    }
+
+    energySource1
+    {
+        type            scalarSemiImplicitSource;
+
+        scalarSemiImplicitSourceCoeffs
+        {
+			$injector1;
+            volumeMode      absolute;
+            injectionRateSuSp
+            {
+                e.air      (500 0); // kg*m^2/s^3
+            }
+        }
+    }
+*/
+}
+
+
+// ************************************************************************* //

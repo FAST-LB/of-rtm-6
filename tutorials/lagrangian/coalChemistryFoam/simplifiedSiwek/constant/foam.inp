@@ -17,8 +17,6 @@ reactions
         A        7e+06;
         beta     0;
         Ta       10063.8;
-        Thigh    2500;
-        Tlow     300;
     }
     hydrogenReaction
     {
@@ -27,7 +25,6 @@ reactions
         A        4.74342e+12;
         beta     0;
         Ta       10063.8;
-        Thigh    2500;
-        Tlow     300;
     }
 }
+

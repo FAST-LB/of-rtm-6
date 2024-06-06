@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2018-2019 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2018 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -107,23 +107,8 @@ void Foam::freestreamVelocityFvPatchVectorField::updateCoeffs()
     }
 
     const Field<vector>& Up = *this;
-    const Field<scalar> magUp(mag(Up));
 
-    const Field<vector>& nf = patch().nf();
-
-    Field<scalar>& vf = valueFraction();
-
-    forAll(vf, i)
-    {
-        if (magUp[i] > vSmall)
-        {
-            vf[i] = 0.5 - 0.5*(Up[i] & nf[i])/magUp[i];
-        }
-        else
-        {
-            vf[i] = 0.5;
-        }
-    }
+    valueFraction() = 0.5 - 0.5*(Up & patch().nf())/mag(Up);
 
     mixedFvPatchField<vector>::updateCoeffs();
 }

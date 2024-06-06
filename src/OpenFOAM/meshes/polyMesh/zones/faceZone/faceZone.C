@@ -416,6 +416,13 @@ void Foam::faceZone::updateMesh(const mapPolyMesh& mpm)
 }
 
 
+void Foam::faceZone::updateMesh()
+{
+    clearAddressing();
+}
+
+
+
 bool Foam::faceZone::checkDefinition(const bool report) const
 {
     return zone::checkDefinition(zoneMesh().mesh().faces().size(), report);

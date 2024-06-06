@@ -184,7 +184,7 @@ void Foam::LiquidEvaporationBoil<CloudType>::calculate
         Hc += Yc*this->owner().thermo().carrier().Ha(i, pc, Tc);
         Hsc += Yc*this->owner().thermo().carrier().Ha(i, ps, Ts);
         Cpc += Yc*this->owner().thermo().carrier().Cp(i, ps, Ts);
-        kappac += Yc*this->owner().thermo().carrier().kappa(i, ps, Ts);
+        kappac += Yc*this->owner().thermo().carrier().kappa(i, ps, Ts, 0.0);
     }
 
     // calculate mass transfer of each specie in liquid

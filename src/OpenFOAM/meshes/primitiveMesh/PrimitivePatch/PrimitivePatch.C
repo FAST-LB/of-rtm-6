@@ -58,6 +58,7 @@ PrimitivePatch
     localPointsPtr_(nullptr),
     localPointOrderPtr_(nullptr),
     faceCentresPtr_(nullptr),
+    faceAreasPtr_(nullptr),
     faceNormalsPtr_(nullptr),
     pointNormalsPtr_(nullptr)
 {}
@@ -94,6 +95,7 @@ PrimitivePatch
     localPointsPtr_(nullptr),
     localPointOrderPtr_(nullptr),
     faceCentresPtr_(nullptr),
+    faceAreasPtr_(nullptr),
     faceNormalsPtr_(nullptr),
     pointNormalsPtr_(nullptr)
 {}
@@ -131,6 +133,7 @@ PrimitivePatch
     localPointsPtr_(nullptr),
     localPointOrderPtr_(nullptr),
     faceCentresPtr_(nullptr),
+    faceAreasPtr_(nullptr),
     faceNormalsPtr_(nullptr),
     pointNormalsPtr_(nullptr)
 {}
@@ -167,6 +170,7 @@ PrimitivePatch
     localPointsPtr_(nullptr),
     localPointOrderPtr_(nullptr),
     faceCentresPtr_(nullptr),
+    faceAreasPtr_(nullptr),
     faceNormalsPtr_(nullptr),
     pointNormalsPtr_(nullptr)
 {}
@@ -523,6 +527,26 @@ faceCentres() const
     return *faceCentresPtr_;
 }
 
+
+// Note: avoiding name clash
+template
+<
+    class Face,
+    template<class> class FaceList,
+    class PointField,
+    class PointType
+>
+const Foam::Field<PointType>&
+Foam::PrimitivePatch<Face, FaceList, PointField, PointType>::
+areas() const
+{
+    if (!faceAreasPtr_)
+    {
+        calcFaceAreas();
+    }
+
+    return *faceAreasPtr_;
+}
 
 template
 <

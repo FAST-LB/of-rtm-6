@@ -581,6 +581,10 @@ public:
 
             //- Update the mesh corresponding to given map
             virtual void updateMesh(const mapPolyMesh& mpm);
+            
+            //- Sync mesh update for topo change on other processors
+            //  Locally, there is no topological change
+            virtual void syncUpdateMesh();
 
             //- Remove boundary patches
             void removeBoundary();

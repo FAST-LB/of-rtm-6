@@ -114,6 +114,10 @@ protected:
         ) const = 0;
 
         virtual void correct(fvVectorMatrix& UEqn) const = 0;
+        
+        virtual void correct(fvVectorMatrix& UEqn, const volScalarField& cellIbMask) const = 0;
+        
+        virtual void correct(fvVectorMatrix& UEqn, const volScalarField& cellIbMask, const volVectorField& UFibers) const = 0;
 
         virtual void correct
         (
@@ -228,7 +232,7 @@ public:
 
         //- Transform the model data wrt mesh changes
         virtual void transformModelData();
-
+        
         //- Return the force over the cell zone(s)
         virtual tmp<vectorField> force
         (
@@ -239,6 +243,12 @@ public:
 
         //- Add resistance
         virtual void addResistance(fvVectorMatrix& UEqn);
+        
+        //- Add resistance with IB
+        virtual void addResistance(fvVectorMatrix& UEqn, const volScalarField& cellIbMask);
+        
+        //- Add resistance with IB and moving fibers
+        virtual void addResistance(fvVectorMatrix& UEqn, const volScalarField& cellIbMask, const volVectorField& UFibers);
 
         //- Add resistance
         virtual void addResistance

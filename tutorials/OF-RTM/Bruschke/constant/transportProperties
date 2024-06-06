@@ -1,0 +1,54 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+twoPhase
+{
+    transportModel  twoPhase;
+    phase1          phase1;
+    phase2          phase2;
+}
+// phase1 //Epoxid
+// {
+//     transportModel  Newtonian;
+//     nu              nu [ 0 2 -1 0 0 0 0 ] 1.091e-4;
+//     rho             rho [ 1 -3 0 0 0 0 0 ] 1100;
+// }
+
+phase1 //Mesamoll
+{
+    transportModel  Newtonian;
+    nu              nu [ 0 2 -1 0 0 0 0 ] 0.113e-3;
+    rho0            rho0 [ 1 -3 0 0 0 0 0 ] 1000;
+    rho             rho [ 1 -3 0 0 0 0 0 ] 1000;
+    psi             psi [ 0 -2 2 0 0 ] 5e-07;
+}
+
+phase2 //Luft
+{
+    transportModel  Newtonian;
+    nu              nu [ 0 2 -1 0 0 0 0 ] 1.515e-05;
+    rho0            rho0 [ 1 -3 0 0 0 0 0 ] 1.188;
+    rho             rho [ 1 -3 0 0 0 0 0 ] 1.188;
+    psi             psi [ 0 -2 2 0 0 ] 1e-05;
+}
+
+pMin            pMin [ 1 -1 -2 0 0 0 0 ] 10000;
+
+sigma           sigma [ 1 0 -2 0 0 0 0 ] 0.0345;
+
+//Pa s  = kg m s-2 m-2 s -> /rho -> kg m s-2 m-2 s m3 kg-1 -> m2 s-1
+
+// ************************************************************************* //

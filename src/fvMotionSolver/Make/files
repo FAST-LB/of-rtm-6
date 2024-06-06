@@ -1,6 +1,7 @@
 fvMotionSolvers/fvMotionSolver/fvMotionSolver.C
 fvMotionSolvers/displacement/SBRStress/displacementSBRStressFvMotionSolver.C
 fvMotionSolvers/displacement/laplacian/displacementLaplacianFvMotionSolver.C
+fvMotionSolvers/displacement/incrementalLaplacian/incrementalDisplacementLaplacianFvMotionSolver.C
 
 fvMotionSolvers/componentDisplacement/componentLaplacian/displacementComponentLaplacianFvMotionSolver.C
 fvMotionSolvers/velocity/laplacian/velocityLaplacianFvMotionSolver.C
@@ -26,7 +27,6 @@ derivedPoint = pointPatchFields/derived
 
 $(derivedPoint)/oscillatingVelocity/oscillatingVelocityPointPatchVectorField.C
 $(derivedPoint)/angularOscillatingVelocity/angularOscillatingVelocityPointPatchVectorField.C
-
 $(derivedPoint)/oscillatingDisplacement/oscillatingDisplacementPointPatchVectorField.C
 $(derivedPoint)/angularOscillatingDisplacement/angularOscillatingDisplacementPointPatchVectorField.C
 $(derivedPoint)/surfaceSlipDisplacement/surfaceSlipDisplacementPointPatchVectorField.C
@@ -35,7 +35,5 @@ $(derivedPoint)/waveDisplacement/waveDisplacementPointPatchVectorField.C
 
 $(derivedPoint)/timeVaryingMappedFixedValue/timeVaryingMappedFixedValuePointPatchFields.C
 $(derivedPoint)/uniformInterpolatedDisplacement/uniformInterpolatedDisplacementPointPatchVectorField.C
-
-
 
 LIB = $(FOAM_LIBBIN)/libfvMotionSolvers

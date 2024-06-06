@@ -55,7 +55,6 @@ void Foam::patchProbes::sampleAndWrite
     }
 }
 
-
 template<class Type>
 void Foam::patchProbes::sampleAndWrite
 (
@@ -215,7 +214,7 @@ Foam::patchProbes::sample
             label patchi = patches.whichPatch(facei);
             label localFacei = patches[patchi].whichFace(facei);
             values[probei] = vField.boundaryField()[patchi][localFacei];
-        }
+        }        
     }
 
     Pstream::listCombineGather(values, isNotEqOp<Type>());

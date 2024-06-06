@@ -1,0 +1,40 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+options
+{
+    wallDist
+    {
+        volScalarField wallDistance
+        (
+            IOobject
+            (
+                "wallDistance",
+                mesh_.time().timeName(),
+                mesh_,
+                IOobject::NO_READ,
+                IOobject::AUTO_WRITE
+            ),
+            mesh_,
+            dimensionedScalar("wallD", dimLength, 0.0)
+        );
+
+        wallDistance = wallDist(mesh_).y();
+    }
+}
+
+// ************************************************************************* //

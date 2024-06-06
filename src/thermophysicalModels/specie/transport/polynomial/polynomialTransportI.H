@@ -82,10 +82,11 @@ template<class Thermo, int PolySize>
 inline Foam::scalar Foam::polynomialTransport<Thermo, PolySize>::mu
 (
     const scalar p,
-    const scalar T
+    const scalar T,
+    const scalar cure
 ) const
 {
-    return muCoeffs_.value(T);
+    return muCoeffs_.value(T)/this->W();
 }
 
 
@@ -93,21 +94,25 @@ template<class Thermo, int PolySize>
 inline Foam::scalar Foam::polynomialTransport<Thermo, PolySize>::kappa
 (
     const scalar p,
-    const scalar T
+    const scalar T,
+    const scalar cure
 ) const
 {
-    return kappaCoeffs_.value(T);
+    return kappaCoeffs_.value(T)/this->W();
 }
 
 
 template<class Thermo, int PolySize>
 inline Foam::scalar Foam::polynomialTransport<Thermo, PolySize>::alphah
 (
-    const scalar p, const scalar T
+    const scalar p,
+	const scalar T,
+    const scalar cure
 ) const
 {
-    return kappa(p, T)/this->Cp(p, T);
+    return kappa(p, T, cure)/this->Cp(p, T);
 }
+
 
 
 // * * * * * * * * * * * * * * * Member Operators  * * * * * * * * * * * * * //

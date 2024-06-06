@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2019 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -45,7 +45,7 @@ Foam::data::data(const objectRegistry& obr)
             IOobject::NO_WRITE
         )
     ),
-    prevTimeIndex_(-1)
+    prevTimeIndex_(0)
 {
     set("solverPerformance", dictionary());
 }

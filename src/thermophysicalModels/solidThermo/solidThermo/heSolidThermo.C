@@ -35,6 +35,8 @@ void Foam::heSolidThermo<BasicSolidThermo, MixtureType>::calculate()
 
     const scalarField& hCells = this->he_;
     const scalarField& pCells = this->p_;
+    const scalarField& cureCells = this->cure_;
+    
     scalarField& rhoCells = this->rho_.primitiveFieldRef();
     scalarField& alphaCells = this->alpha_.primitiveFieldRef();
 
@@ -56,13 +58,16 @@ void Foam::heSolidThermo<BasicSolidThermo, MixtureType>::calculate()
         rhoCells[celli] = volMixture_.rho(pCells[celli], TCells[celli]);
 
         alphaCells[celli] =
-            volMixture_.kappa(pCells[celli], TCells[celli])
+            volMixture_.kappa(pCells[celli], TCells[celli], cureCells[celli])
             /
             mixture_.Cpv(pCells[celli], TCells[celli]);
     }
 
     volScalarField::Boundary& pBf =
         this->p_.boundaryFieldRef();
+
+    volScalarField::Boundary& cureBf =
+        this->cure_.boundaryFieldRef();
 
     volScalarField::Boundary& TBf =
         this->T_.boundaryFieldRef();
@@ -79,6 +84,7 @@ void Foam::heSolidThermo<BasicSolidThermo, MixtureType>::calculate()
     forAll(this->T_.boundaryField(), patchi)
     {
         fvPatchScalarField& pp = pBf[patchi];
+        fvPatchScalarField& pcure = cureBf[patchi];
         fvPatchScalarField& pT = TBf[patchi];
         fvPatchScalarField& prho = rhoBf[patchi];
         fvPatchScalarField& phe = heBf[patchi];
@@ -105,7 +111,7 @@ void Foam::heSolidThermo<BasicSolidThermo, MixtureType>::calculate()
                 prho[facei] = volMixture_.rho(pp[facei], pT[facei]);
 
                 palpha[facei] =
-                    volMixture_.kappa(pp[facei], pT[facei])
+                    volMixture_.kappa(pp[facei], pT[facei], pcure[facei])
                   / mixture_.Cpv(pp[facei], pT[facei]);
             }
         }
@@ -129,7 +135,7 @@ void Foam::heSolidThermo<BasicSolidThermo, MixtureType>::calculate()
                 prho[facei] = volMixture_.rho(pp[facei], pT[facei]);
 
                 palpha[facei] =
-                    volMixture_.kappa(pp[facei], pT[facei])
+                    volMixture_.kappa(pp[facei], pT[facei], pcure[facei])
                   / mixture_.Cpv(pp[facei], pT[facei]);
             }
         }
@@ -223,6 +229,7 @@ Foam::heSolidThermo<BasicSolidThermo, MixtureType>::Kappa() const
     vectorField& KappaCells = Kappa.primitiveFieldRef();
     const scalarField& TCells = this->T_;
     const scalarField& pCells = this->p_;
+    const scalarField& cureCells = this->cure_;
 
     forAll(KappaCells, celli)
     {
@@ -232,7 +239,7 @@ Foam::heSolidThermo<BasicSolidThermo, MixtureType>::Kappa() const
                 pCells[celli],
                 TCells[celli],
                 celli
-            ).Kappa(pCells[celli], TCells[celli]);
+            ).Kappa(pCells[celli], TCells[celli], cureCells[celli]);
     }
 
     volVectorField::Boundary& KappaBf = Kappa.boundaryFieldRef();
@@ -242,6 +249,7 @@ Foam::heSolidThermo<BasicSolidThermo, MixtureType>::Kappa() const
         vectorField& Kappap = KappaBf[patchi];
         const scalarField& pT = this->T_.boundaryField()[patchi];
         const scalarField& pp = this->p_.boundaryField()[patchi];
+        const scalarField& pcure = this->cure_.boundaryField()[patchi];
 
         forAll(Kappap, facei)
         {
@@ -252,7 +260,7 @@ Foam::heSolidThermo<BasicSolidThermo, MixtureType>::Kappa() const
                     pT[facei],
                     patchi,
                     facei
-                ).Kappa(pp[facei], pT[facei]);
+                ).Kappa(pp[facei], pT[facei], pcure[facei]);
         }
     }
 
@@ -268,6 +276,7 @@ Foam::heSolidThermo<BasicSolidThermo, MixtureType>::Kappa
 ) const
 {
     const scalarField& pp = this->p_.boundaryField()[patchi];
+    const scalarField& curep = this->cure_.boundaryField()[patchi];
     const scalarField& Tp = this->T_.boundaryField()[patchi];
     tmp<vectorField> tKappa(new vectorField(pp.size()));
 
@@ -282,7 +291,7 @@ Foam::heSolidThermo<BasicSolidThermo, MixtureType>::Kappa
                 Tp[facei],
                 patchi,
                 facei
-            ).Kappa(pp[facei], Tp[facei]);
+            ).Kappa(pp[facei], Tp[facei], curep[facei]);
     }
 
     return tKappa;

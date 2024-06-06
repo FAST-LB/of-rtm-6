@@ -95,7 +95,9 @@ public:
     // Member Functions
 
         // Access
-
+            //- Current pimple corrector
+            inline label corrPimple() const;
+    
             //- Maximum number of pimple correctors
             inline label nCorrPimple() const;
 

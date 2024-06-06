@@ -137,6 +137,8 @@ Foam::InterfaceCompositionModel<Thermo, OtherThermo>::D
     const volScalarField& p(thermo_.p());
 
     const volScalarField& T(thermo_.T());
+    
+    const volScalarField& cure(thermo_.cure());
 
     tmp<volScalarField> tmpD
     (
@@ -158,7 +160,7 @@ Foam::InterfaceCompositionModel<Thermo, OtherThermo>::D
     forAll(p, celli)
     {
         D[celli] =
-            localThermo.alphah(p[celli], T[celli])
+            localThermo.alphah(p[celli], T[celli], cure[celli])
            /localThermo.rho(p[celli], T[celli]);
     }
 

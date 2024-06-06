@@ -64,6 +64,9 @@ namespace debug
 
     //- The OptimisationSwitches sub-dictionary in the central controlDict.
     dictionary& optimisationSwitches();
+    
+    //- The Tolerances sub-dictionary in the central controlDict.
+    dictionary& tolerances();
 
     //- Lookup debug switch or add default value.
     int debugSwitch(const char* name, const int defaultValue=0);
@@ -73,6 +76,9 @@ namespace debug
 
     //- Lookup optimisation switch or add default value.
     int optimisationSwitch(const char* name, const int defaultValue=0);
+    
+    //- Lookup tolerances switch or add default value.
+    double tolerances(const char* name, const double defaultValue = 0);
 
     //- Lookup optimisation switch or add default value.
     float floatOptimisationSwitch

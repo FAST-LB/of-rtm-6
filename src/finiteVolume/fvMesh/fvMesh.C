@@ -797,6 +797,31 @@ Foam::tmp<Foam::scalarField> Foam::fvMesh::movePoints(const pointField& p)
 }
 
 
+void Foam::fvMesh::syncUpdateMesh()
+{
+    // Update polyMesh. This needs to keep cell volumes
+    polyMesh::syncUpdateMesh();
+
+    surfaceInterpolation::clearOut();
+    clearGeomNotOldVol();
+
+    clearAddressing();
+
+    // handleMorph() should also clear out the surfaceInterpolation.
+    // This is a temporary solution
+    surfaceInterpolation::movePoints();
+
+    // Note:
+    // Not allowed to call deltaCoeffs here because the faces and cells may be
+    // at zero area/volume.  It will be called in movePoints after the
+    // topo change.
+    // HJ, VV and IG, 25/Oct/2016
+
+    // Function object update moved to polyMesh
+    // HJ, 29/Aug/2010
+}
+
+
 void Foam::fvMesh::updateMesh(const mapPolyMesh& mpm)
 {
     // Update polyMesh. This needs to keep volume existent!
