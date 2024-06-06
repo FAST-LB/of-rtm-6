@@ -1,26 +1,26 @@
-* [[https://git.scc.kit.edu/FAST-LT-INTERNAL/OF-RTM-dev/-/wikis/OF-RTM-Wiki-Home][OF-RTM Wiki]]
+* of6-rtm
+** About the project
+  This software is designed for simulations of mold filling and curing in resin transfer molding, a manufacturing process for continuous-fiber reinforced composites. It is based on [[https://github.com/OpenFOAM/OpenFOAM-6.git][OpenFOAM-6]], a free, open source computational fluid dynamics (CFD) software package released by the OpenFOAM Foundation. Relevant extensions presented in of-rtm6 consist in heterogeneous and porosity dependent permeability, resin cure and cure dependent transport modelling.
 
-* README for [[http://openfoam.org/version/6][OpenFOAM-6]]
+This software originates from KIT's Institute of Vehicle Systems Technology (FAST), Division Lightweight Engineering (Prof. Kärger and Prof. Henning).
 
-* About OpenFOAM
-  OpenFOAM is a free, open source computational fluid dynamics (CFD) software
-  package released by the OpenFOAM Foundation. It has a large user base across
-  most areas of engineering and science, from both commercial and academic
-  organisations. OpenFOAM has an extensive range of features to solve anything
-  from complex fluid flows involving chemical reactions, turbulence and heat
-  transfer, to solid dynamics and electromagnetics.
+** Getting started
+For instructions on how to set up the project locally, the user is referred to the [https://openfoam.org/download/source][[OpenFOAM installation instructions]].
+ 
+** Usage
+Mention RTM tutorials. See also the [[https://openfoam.org/resources][OpenFOAM documentation]].
 
-* Copyright
-  OpenFOAM is free software: you can redistribute it and/or modify it under the
+** Copyright
+  of6-rtm is free software: you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software
   Foundation, either version 3 of the License, or (at your option) any later
-  version.  See the file =COPYING= in this directory or
-  [[http://www.gnu.org/licenses/]], for a description of the GNU General Public
-  License terms under which you can copy the files.
+  version.  License terms under which you can copy the files can be found [[./COPYING][here]] or at
+  [[http://www.gnu.org/licenses/]].
+
+** If you use this software, follow good scientific practice and cite it properly. See how to cite in[[][this file].
+
 
 * [[https://openfoam.org/download/source][Download and installation instructions]]
 * [[https://openfoam.org/resources][Documentation]]
 * [[https://cpp.openfoam.org/v6][Source code documentation]]
 * [[https://openfoam.org/dev/coding-style-guide][OpenFOAM C++ Style Guide]]
-* [[https://bugs.openfoam.org][Reporting bugs in OpenFOAM]]
-* [[https://openfoam.org/contact][Contacting the OpenFOAM Foundation]]
