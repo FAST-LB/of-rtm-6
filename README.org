@@ -1,26 +1,29 @@
-* [[https://git.scc.kit.edu/FAST-LT-INTERNAL/OF-RTM-dev/-/wikis/OF-RTM-Wiki-Home][OF-RTM Wiki]]
+* About of6-rtm
+  This software is designed for simulations of mold filling and curing in resin transfer molding. It is based on [[https://github.com/OpenFOAM/OpenFOAM-6.git][OpenFOAM-6]], a free, open source computational fluid dynamics (CFD) software package released by the OpenFOAM Foundation. Relevant extensions presented in of-rtm6 consist in heterogeneous and porosity dependent permeability, resin cure and cure dependent transport modelling.
 
-* README for [[http://openfoam.org/version/6][OpenFOAM-6]]
+** License
+Copyright 2017-2024 Karlsruhe Institut of Technology (KIT)
 
-* About OpenFOAM
-  OpenFOAM is a free, open source computational fluid dynamics (CFD) software
-  package released by the OpenFOAM Foundation. It has a large user base across
-  most areas of engineering and science, from both commercial and academic
-  organisations. OpenFOAM has an extensive range of features to solve anything
-  from complex fluid flows involving chemical reactions, turbulence and heat
-  transfer, to solid dynamics and electromagnetics.
-
-* Copyright
-  OpenFOAM is free software: you can redistribute it and/or modify it under the
+  of6-rtm is free software: you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software
   Foundation, either version 3 of the License, or (at your option) any later
-  version.  See the file =COPYING= in this directory or
-  [[http://www.gnu.org/licenses/]], for a description of the GNU General Public
-  License terms under which you can copy the files.
-
-* [[https://openfoam.org/download/source][Download and installation instructions]]
-* [[https://openfoam.org/resources][Documentation]]
-* [[https://cpp.openfoam.org/v6][Source code documentation]]
-* [[https://openfoam.org/dev/coding-style-guide][OpenFOAM C++ Style Guide]]
-* [[https://bugs.openfoam.org][Reporting bugs in OpenFOAM]]
-* [[https://openfoam.org/contact][Contacting the OpenFOAM Foundation]]
+  version.  License terms under which you can copy the files can be found [[./COPYING][here]] or at
+  [[http://www.gnu.org/licenses/]]. If you use this software, follow good scientific practice and cite it properly. See how to cite in[[][this file].
+** Usage
+RTM tutorials. See also the [[https://openfoam.org/resources][OpenFOAM documentation]] and the [[https://cpp.openfoam.org/v6/][source documentation]].
+** Citing of6-rtm
+You need to cite of6-rtm when using it. See [[./CITATION.cff][here]] for detailed information.
+** Contributing
+Yu might have a look at the [[https://openfoam.org/dev/coding-style-guide][OpenFOAM C++ Style Guide]].
+** Contributions Under Repository License
+Whenever you add Content to this repository, you license that Content under the terms defined in the license in the repository, and you agree that you have the right to license that Content under those terms. If you have a separate agreement to license that Content under different terms, such as a contributor license agreement, that agreement will supersede.
+Isn't this just how it works already? Yep. This is widely accepted as the norm in the open-source community; it's commonly referred to by the shorthand "inbound=outbound". We're just making it explicit.
+** Contact
+FAST LB
+lt-github@fast.kit.edu
+Project Link: https://github.com/FAST-LB/of6-rtm
+** Acknowledgements
+-	Vector YIG
+-	DFG MerVa
+-	…
+*** Built with third-party?
