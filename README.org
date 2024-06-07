@@ -2,7 +2,7 @@
 ** About the project
   This software is designed for simulations of mold filling and curing in resin transfer molding, a manufacturing process for continuous-fiber reinforced composites. It is based on [[https://github.com/OpenFOAM/OpenFOAM-6.git][OpenFOAM-6]], a free, open source computational fluid dynamics (CFD) software package released by the OpenFOAM Foundation. Relevant extensions presented in of6-rtm consist in heterogeneous and porosity dependent permeability, resin cure and cure dependent transport modelling.
 
-This software originates from KIT's Institute of Vehicle Systems Technology (FAST), Division Lightweight Engineering (Prof. Kärger).
+  This software originates from KIT's Institute of Vehicle Systems Technology (FAST), Division Lightweight Engineering (Prof. Kärger).
 
 ** Getting started
   For instructions on how to set up the project locally, the user is referred to the [https://openfoam.org/download/source][[OpenFOAM installation instructions]].
@@ -20,6 +20,7 @@ This software originates from KIT's Institute of Vehicle Systems Technology (FAS
   4. Add yourself to docs/Contributors.md
   5. Push to the Branch (git push origin feature/NewFeature)
   6. Open a Merge Request
+  You might have a look at the [[https://openfoam.org/dev/coding-style-guide][OpenFOAM C++ Style Guide]].
 
 ** License
   Copyright 2017-2024 Karlsruhe Institut of Technology (KIT)
@@ -32,9 +33,6 @@ This software originates from KIT's Institute of Vehicle Systems Technology (FAS
 
 ** Citing of6-rtm
   You need to cite of6-rtm when using it. Click [[./CITATION.cff][here]] to see how to cite of6-rtm.
-  
-** Contributing
-  You might have a look at the [[https://openfoam.org/dev/coding-style-guide][OpenFOAM C++ Style Guide]].
 
 ** Contributions Under Repository License
   Whenever you add Content to this repository, you license that Content under the terms defined in the license in the repository, and you agree that you have the right to license that Content under those terms. If you have a separate agreement to license that Content under different terms, such as a contributor license agreement, that agreement will supersede.
