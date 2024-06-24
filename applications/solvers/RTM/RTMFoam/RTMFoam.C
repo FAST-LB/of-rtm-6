@@ -34,7 +34,7 @@ Application
     julian.seuffert@kit.edu
 
 Description
-    CRTM solver for 2 compressible, non-isothermal immiscible fluids using a VOF
+    RTM solver for 2 compressible, isothermal immiscible fluids using a VOF
     (volume of fluid) phase-fraction based interface capturing approach.
     
     Anisotropic porous media for multiple zones is included,
