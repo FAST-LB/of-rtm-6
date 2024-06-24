@@ -1,0 +1,185 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    alpha.resin
+    {
+        nAlphaCorr      1;
+        nAlphaSubCycles 1;
+        cAlpha          1;
+    }
+
+    ".*(rho|rhoFinal)"
+    {
+        solver          diagonal;
+    }
+
+    pcorr
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-05;
+            relTol          0;
+            smoother        GaussSeidel;
+			nPreSweeps      2;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration off;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     2;
+        }
+        tolerance       1e-05;
+        relTol          0;
+        maxIter         100;
+    }
+    pcorrFinal
+    {
+        $pcorr
+    }
+
+    p_rgh
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-07;
+            relTol          0.05;
+            smoother        GaussSeidel;
+            nPreSweeps      2;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration off;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     4;
+        }
+        tolerance       1e-07;
+        relTol          0;
+        maxIter         100;
+    }
+
+    p_rghFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-08;
+            relTol          0;
+            nVcycles        2;
+            smoother        GaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration on;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+        tolerance       1e-08;
+        relTol          0;
+        maxIter         20;
+    }
+
+    U
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-09;
+        relTol          0;
+        nSweeps         2;
+    }
+	UFinal
+    {
+		solver          GAMG;
+        tolerance       1e-07;
+        relTol          0;
+		nVcycles        2;
+        smoother        GaussSeidel;
+        nPreSweeps      2;
+        nPostSweeps     2;
+        nFinestSweeps   2;
+        cacheAgglomeration on;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     2;
+    }
+
+    "(T|cure)"
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          0.01;
+        smoother        DIC;
+    }
+
+    "(TFinal|cureFinal)"
+    {
+        solver          PBiCGStab;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       2e-09;
+            relTol          0;
+            nVcycles        2;
+            smoother        DILUGaussSeidel;
+            nPreSweeps      2;
+        }
+
+        tolerance       2e-09;
+        relTol          0;
+        maxIter         20;
+    }
+	
+	cellMotionUz
+    {
+        solver GAMG;
+		preconditioner DILU;
+		tolerance 1e-08;
+		relTol 0.0;
+		smoother GaussSeidel;
+		nPreSweeps 0;
+		nPostSweeps 2;
+		cacheAgglomeration on;
+		agglomerator faceAreaPair;
+		nCellsInCoarsestLevel 10;
+		mergeLevels 1;
+    }
+    cellMotionUzFinal
+    {
+        $cellMotionUz
+    }
+}
+
+PIMPLE
+{
+    momentumPredictor yes;
+    transonic       no;
+    nOuterCorrectors 1;
+    nCorrectors     1;
+    nNonOrthogonalCorrectors 2;
+	//nUCorrectors	2;
+}
+
+
+
+// ************************************************************************* //
