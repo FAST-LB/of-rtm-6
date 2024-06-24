@@ -48,4 +48,5 @@
 -	DFG MerVa
 -	…
 
-*** Built with third-party?
+*** Built With
+- [[https://github.com/OpenFOAM/ThirdParty-6][OpenFOAM-6 third-party library compilation scripts]]
