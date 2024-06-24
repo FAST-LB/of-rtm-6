@@ -31,8 +31,8 @@
 #
 #------------------------------------------------------------------------------
 
-export WM_PROJECT=of-rtm-dev
-export WM_PROJECT_VERSION=PublicRTM
+export WM_PROJECT=OpenFOAM
+export WM_PROJECT_VERSION=6
 
 ################################################################################
 # USER EDITABLE PART: Changes made here may be lost with the next upgrade
@@ -44,7 +44,7 @@ export WM_PROJECT_VERSION=PublicRTM
 #
 [ "$BASH" -o "$ZSH_NAME" ] && \
 # export FOAM_INST_DIR=$(cd $(dirname ${BASH_SOURCE:-$0})/../.. && pwd -P) || \
-export FOAM_INST_DIR=$HOME/of-rtm-dev-PublicRTM
+export FOAM_INST_DIR=$HOME/$WM_PROJECT-$WM_PROJECT_VERSION
 # export FOAM_INST_DIR=~$WM_PROJECT
 # export FOAM_INST_DIR=/opt/$WM_PROJECT
 # export FOAM_INST_DIR=/usr/local/$WM_PROJECT
