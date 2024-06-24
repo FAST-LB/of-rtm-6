@@ -1,6 +1,6 @@
 # Contributors
 
-Who contributed to this software? This list is in alphabetical order. More details will be added.
+Who contributed to this software? This preliminary list is in alphabetical order and needs to be discussed further.
 
 | Name | Contract | Status of employment | Contributed code | Funding | Contributor license agreement (cla) |
 |---|---|---|---|---|---|
