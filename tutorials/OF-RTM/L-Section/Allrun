@@ -1,0 +1,18 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+
+# m4 constant/polyMesh/blockMeshDict.m4 > constant/polyMesh/blockMeshDict
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+rm log.*
+rm -r processor*
+rm -r [1-9]*
+rm -r 0.*
+
+runApplication blockMesh
+runApplication topoSet
+runApplication RTMFoam 
+
+

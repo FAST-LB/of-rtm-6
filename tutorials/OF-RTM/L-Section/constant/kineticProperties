@@ -1,0 +1,39 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      kineticProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+kinetic1
+{
+    type            KamalMalkin;
+    active          yes;
+    cellZone        cavity;
+    
+    cureGel         0.72; //[-]
+
+    KamalMalkinCoeffs
+    {
+        R   8.3144598; //[J/mol/K]
+        A1  3862141.661; // [1/s]
+        A2  105920586010.0; // [1/s]
+        E1  62877.702; // [J/mol]
+        E2  321915.055; // [J/mol]
+        n   1.63; // [-]
+        m   1.571; // [-]
+    }
+}
+
+
+// ************************************************************************* //

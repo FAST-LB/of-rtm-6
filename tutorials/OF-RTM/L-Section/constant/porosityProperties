@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      porosityProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+porosity1
+{
+    type            fiberDarcyForchheimer;
+    active          yes;
+    cellZone        layer1;
+
+    fiberDarcyForchheimerCoeffs
+    {
+        // name of boundaries to calculate thickness direction from
+        calcThickness true;
+		thicknessWall upperMold;
+        
+        type tabularData;
+        /*
+        GebartCoeffs
+        {
+            vf0     0.5;
+            vfmax   0.9;
+            d       d [0 -2 0 0 0 0 0] (0.37e11 0.37e11 0.37e11);
+            f       f [0 -1 0 0 0 0 0] (0 0 0);
+        }
+        */      
+        
+        tabularDataCoeffs
+        {
+            //type: exponential, linear, spline
+            interpolation exponential;
+            FVF (0 0.5 1);			
+            K1 (1 1E-11 1E-15);
+            K2 (1 1E-12 1E-15);
+            K3 (1 1E-12 1E-15);
+        }
+        
+        /*
+        exponentialFunctionCoeffs
+        {
+            C01     1e-10;
+            C02     1e-10;
+            C03     1e-10;
+            C11     1e-5;
+            C12     1e-5;
+            C13     1e-5;
+        }
+        */
+    }
+}
+
+// ************************************************************************* //
