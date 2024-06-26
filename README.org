@@ -33,6 +33,7 @@
 
 ** Citing of6-rtm
   You need to cite of6-rtm when using it. Click [[./CITATION.cff][here]] to see how to cite of6-rtm.
+A. Bernath, J. Seuffert, S. Dietrich, N. Poppe, D. Magagnato, F. Wittemann, F. Henning, L. Kärger. (2024) OpenFOAM-6 further development with RTM solvers and curing. Karlsruhe Institute of Technology (KIT). available at: https://github.com/FAST-LB/of6-rtm DOI:
 
 ** Contributions Under Repository License
   Whenever you add Content to this repository, you license that Content under the terms defined in the license in the repository, and you agree that you have the right to license that Content under those terms. If you have a separate agreement to license that Content under different terms, such as a contributor license agreement, that agreement will supersede.
@@ -44,9 +45,12 @@
   Project Link: [[https://github.com/FAST-LB/of6-rtm]]
 
 ** Acknowledgements
--	Vector YIG
--	DFG MerVa
--	…
+- TC² - Technologycluster Composite, „RTM CAE/CAx - Development of a continuous CAE/CAx chain for the RTM process against the background of the production of high-performance fiber composites“  2011-2013
+- SMILE - "System-integrative multi-material lightweight construction for electromobility" 2014-2017 BMBF (03X3041Q)
+- SPP 1712 - "Basic investigations of intrinsically manufactured FRP/metal composites - from embedded insert to load-bearing hybrid structure" 2017-2020 German research foundation DFG (project HE 6154/3-2)
+- Vector Foundation YIG Green Mobility "Weight-optimized vehicle structures through customized high-performance fiber composites" 2015-2020
+- FSI Sandwich - “Modelling of the fluid-structure interaction in mold filling processes for an intrinsic manufacturing of fiber-reinforced composite sandwich components” 2021-2025 German research foundation DFG (project KA 4224/9-1 and HE 6154/8-1)
+-	MerVa - "Method and process development for the infiltration of highly resilient topology-optimized fiber-polymer composite components with variable-axial fiber architecture" German research foundation DFG (project KA 4224/4-1)
 
 *** Built With
 - [[https://github.com/OpenFOAM/ThirdParty-6][OpenFOAM-6 third-party library compilation scripts]]
