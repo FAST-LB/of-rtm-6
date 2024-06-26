@@ -7,6 +7,7 @@ Who contributed to this software? This preliminary list is in alphabetical order
 | Alexander Bernath |   |   |   |   |   |
 | Sarah Dietrich |   |   |   |   |   |
 | Luise Kärger |   |   |   |   |   |
+| Dino Magagnato |   |   |   |   |   |
 | Nik Poppe |   |   |   |   |   |
 | Julian Seuffert |   |   |   |   |   |
 | Florian Wittemann |   |   |   |   |   |
