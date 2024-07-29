@@ -6,25 +6,37 @@
 
 ** Getting started
   For instructions on how to set up the project locally, the user is referred to the [https://openfoam.org/download/source][[OpenFOAM installation instructions]].
+  For the usage of the RTM extensions please have a look at the [[https://github.com/FAST-LB/of6-rtm/tree/main/tutorials/OF-RTM][RTM tutorials]]:
+  1. anisotropic porosity: Brinkman
+  2. fiber orientation: Bruschke
+  3. moving cavity: IRTM_test and CRTM_test
+  4. curing: L-section
  
 ** Usage
   Description and examples from RTM tutorials. See also the [[https://openfoam.org/resources][OpenFOAM documentation]] and the [[https://cpp.openfoam.org/v6/][source documentation]].
 
 ** Contributing
-  Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-  If you have a suggestion that would make this better, please fork the repo and create a merge request. You can also simply open an issue with the tag "enhancement".
-  Don't forget to give the project a star! Thanks again!
-  1. Fork the Project
-  2. Create your Feature Branch (git checkout -b feature/NewFeature)
-  3. Commit your Changes (git commit -m 'Add some NewFeature')
-  4. Add yourself to docs/Contributors.md
-  5. Push to the Branch (git push origin feature/NewFeature)
-  6. Open a Merge Request
+When contributing to this repository, please first discuss the change you wish to make via issue,
+email, or any other method with the owners of this repository before making a change.
+
+Please note we have a code of conduct, please follow it in all your interactions with the project.
+
+### Pull Request Process
+
+1. Ensure any install or build dependencies are removed before the end of the layer when doing a
+   build.
+2. Update the README.md with details of changes to the interface.
+3. Increase the version numbers in any examples files and the README.md to the new version that this
+   Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
+4. You may merge the Pull Request in once you have the sign-off of one other developer.
+
+
+## Code of Conduct
+
+Please refer to our [Code of Conduct](https://github.com/FAST-LB/pyGCodeDecode/blob/main/CODE_OF_CONDUCT.md).
   You might have a look at the [[https://openfoam.org/dev/coding-style-guide][OpenFOAM C++ Style Guide]].
 
 ** License
-  Copyright 2017-2024 Karlsruhe Institut of Technology (KIT)
-  
   of6-rtm is free software: you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software
   Foundation, either version 3 of the License, or (at your option) any later
@@ -33,7 +45,7 @@
 
 ** Citing of6-rtm
   You need to cite of6-rtm when using it. Click [[./CITATION.cff][here]] to see how to cite of6-rtm.
-A. Bernath, J. Seuffert, S. Dietrich, N. Poppe, D. Magagnato, F. Wittemann, F. Henning, L. Kärger. (2024) OpenFOAM-6 further development with RTM solvers and curing. Karlsruhe Institute of Technology (KIT). available at: https://github.com/FAST-LB/of6-rtm DOI:
+A. Bernath, J. Seuffert, S. Dietrich, N. Poppe, D. Magagnato, F. Wittemann, F. Henning, L. Kärger. (2024) of6-rtm – An OpenFOAM-6 extension with curing models and anisotropic permeability for usage in LCM simulations. Karlsruhe Institute of Technology (KIT). available at: https://github.com/FAST-LB/of6-rtm DOI:
 
 ** Contributions Under Repository License
   Whenever you add Content to this repository, you license that Content under the terms defined in the license in the repository, and you agree that you have the right to license that Content under those terms. If you have a separate agreement to license that Content under different terms, such as a contributor license agreement, that agreement will supersede.
