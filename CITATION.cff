@@ -17,35 +17,65 @@ authors:
   - given-names: Alexander
     family-names: Bernath
     email: alexander.bernath@simutence.de
-    affiliation: Karlsruhe Institute of Technology
+    affiliation: >-
+      Institute of Vehicle System Technology - Lightweight
+      Engineering, Karlsruhe Institute of Technology (KIT),
+      Rintheimer Querallee 2, Karlsruhe, 76131, Germany
+    orcid: 'https://orcid.org/0000-0002-4938-4872' 
   - given-names: Julian
     family-names: Seuffert
+    affiliation: >-
+      Institute of Vehicle System Technology - Lightweight
+      Engineering, Karlsruhe Institute of Technology (KIT),
+      Rintheimer Querallee 2, Karlsruhe, 76131, Germany
     orcid: 'https://orcid.org/0000-0003-0300-9070'
-    affiliation: Karlsruhe Institute of Technology
   - given-names: Sarah
     family-names: Dietrich
     email: sarah.dietrich@kit.edu
-    affiliation: Karlsruhe Institute of Technology
+    affiliation: >-
+      Institute of Vehicle System Technology - Lightweight
+      Engineering, Karlsruhe Institute of Technology (KIT),
+      Rintheimer Querallee 2, Karlsruhe, 76131, Germany
     orcid: 'https://orcid.org/0000-0002-7321-5788'
   - given-names: Nik
     family-names: Poppe
-    affiliation: Karlsruhe Institute of Technology
     email: nik.poppe@kit.edu
+    affiliation: >-
+      Institute of Vehicle System Technology - Lightweight
+      Engineering, Karlsruhe Institute of Technology (KIT),
+      Rintheimer Querallee 2, Karlsruhe, 76131, Germany
   - given-names: Dino
     family-names: Magagnato
-    affiliation: Karlsruhe Institute of Technology
+    affiliation: >-
+      Institute of Vehicle System Technology - Lightweight
+      Engineering, Karlsruhe Institute of Technology (KIT),
+      Rintheimer Querallee 2, Karlsruhe, 76131, Germany
   - given-names: Florian
     family-names: Wittemann
     email: florian.wittemann@kit.edu
-    affiliation: Karlsruhe Institute of Technology
+    affiliation: >-
+      Institute of Vehicle System Technology - Lightweight
+      Engineering, Karlsruhe Institute of Technology (KIT),
+      Rintheimer Querallee 2, Karlsruhe, 76131, Germany
+    orcid: 'https://orcid.org/0000-0001-8693-7264'
   - given-names: Frank
     family-names: Henning
-    affiliation: Karlsruhe Institute of Technology
+    affiliation: >-
+      Institute of Vehicle System Technology - Lightweight
+      Engineering, Karlsruhe Institute of Technology (KIT),
+      Rintheimer Querallee 2, Karlsruhe, 76131, Germany
   - given-names: Luise
     family-names: Kärger
-    orcid: 'https://orcid.org/0000-0002-6534-6518'
     email: luise.kaerger@kit.edu
-    affiliation: Karlsruhe Institute of Technology
+    affiliation: >-
+      Institute of Vehicle System Technology - Lightweight
+      Engineering, Karlsruhe Institute of Technology (KIT),
+      Rintheimer Querallee 2, Karlsruhe, 76131, Germany
+    orcid: 'https://orcid.org/0000-0002-6534-6518'
+identifiers:
+  - type: doi
+    value: ---
+    description: Zenodo archive
 repository-code: 'https://github.com/FAST-LB/of6-rtm'
 abstract: >-
   To capture the infiltration flow of a resin in a porous
