@@ -5,7 +5,7 @@
   This software originates from KIT's Institute of Vehicle Systems Technology (FAST), Division Lightweight Engineering (Prof. Kärger).
 
 ** Getting started
-  For instructions on how to set up the project locally, the user is referred to the [https://openfoam.org/download/source][[OpenFOAM installation instructions]].
+  For instructions on how to set up the project locally, the user is referred to the [[https://openfoam.org/download/source][OpenFOAM installation instructions]].
   For the usage of the RTM extensions please have a look at the [[https://github.com/FAST-LB/of6-rtm/tree/main/tutorials/OF-RTM][RTM tutorials]]:
   1. anisotropic porosity: Brinkman
   2. fiber orientation: Bruschke
@@ -21,7 +21,7 @@ email, or any other method with the owners of this repository before making a ch
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
-### Pull Request Process
+*** Pull Request Process
 
 1. Ensure any install or build dependencies are removed before the end of the layer when doing a
    build.
@@ -30,12 +30,11 @@ Please note we have a code of conduct, please follow it in all your interactions
    Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
 4. You may merge the Pull Request in once you have the sign-off of one other developer.
 
+ You might have a look at the [[https://openfoam.org/dev/coding-style-guide][OpenFOAM C++ Style Guide]].
+*** Code of Conduct
 
-## Code of Conduct
-
-Please refer to our [Code of Conduct](https://github.com/FAST-LB/pyGCodeDecode/blob/main/CODE_OF_CONDUCT.md).
-  You might have a look at the [[https://openfoam.org/dev/coding-style-guide][OpenFOAM C++ Style Guide]].
-
+Please refer to our [[Code of Conduct][https://github.com/FAST-LB/of6-rtm/blob/main/CODE_OF_CONDUCT.md]].
+ 
 ** License
   of6-rtm is free software: you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software
