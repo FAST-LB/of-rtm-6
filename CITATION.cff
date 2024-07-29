@@ -1,19 +1,63 @@
-#https://www.software.ac.uk/publication/how-cite-and-describe-software
-#Software checked-out from a public repository:
-#ProductName. Publisher. URL. CheckoutDate. Checkout: RepositorySpecificCheckoutInformation.
-#of6rtm. Karlsruhe Institute of Technology (KIT). https://github.com/FAST-LB/of6-rtm. CheckoutDate.
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+title: of6-rtm
+message: >-
+  This is an extension to OpenFOAM-6 in order to predict the
+  infiltration behavior in Liquid Composite Molding
+  processes. The porous solver is extended to account for
+  fiber orientation and volume fraction dependent
+  permeability model and viscosity and kinetic models are
+  added to accurately track the curing of the resin as well
+  as changes in the viscosity and glass transition
+  temperature during the process.
+type: software
 authors:
-- family-names: "Lisa"
-  given-names: "Mona"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
-- family-names: "Bot"
-  given-names: "Hew"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
-title: "of6-rtm"
-version: 1.0
-doi: 10.5281/zenodo.1234
-date-released: 2024-07-XX
-url: "https://github.com/FAST-LB/of6-rtm"
+  - given-names: Alexander
+    family-names: Bernath
+    email: alexander.bernath@simutence.de
+    affiliation: Karlsruhe Institute of Technology
+  - given-names: Julian
+    family-names: Seuffert
+    orcid: 'https://orcid.org/0000-0003-0300-9070'
+    affiliation: Karlsruhe Institute of Technology
+  - given-names: Sarah
+    family-names: Dietrich
+    email: sarah.dietrich@kit.edu
+    affiliation: Karlsruhe Institute of Technology
+    orcid: 'https://orcid.org/0000-0002-7321-5788'
+  - given-names: Nik
+    family-names: Poppe
+    affiliation: Karlsruhe Institute of Technology
+    email: nik.poppe@kit.edu
+  - given-names: Dino
+    family-names: Magagnato
+    affiliation: Karlsruhe Institute of Technology
+  - given-names: Florian
+    family-names: Wittemann
+    email: florian.wittemann@kit.edu
+    affiliation: Karlsruhe Institute of Technology
+  - given-names: Frank
+    family-names: Henning
+    affiliation: Karlsruhe Institute of Technology
+  - given-names: Luise
+    family-names: Kärger
+    orcid: 'https://orcid.org/0000-0002-6534-6518'
+    email: luise.kaerger@kit.edu
+    affiliation: Karlsruhe Institute of Technology
+repository-code: 'https://github.com/FAST-LB/of6-rtm'
+abstract: >-
+  To capture the infiltration flow of a resin in a porous
+  fiber structure, it is necessary to model a fiber
+  orientation and fiber volume fraction dependent
+  permeability. Moreover curing of the resin is included.
+keywords:
+  - Resin Transfer Molding
+  - Liquid Composite Molding
+  - anisotropic porous media
+  - curing
+  - deforming mesh
+  - adaptive fiber volume fraction
+  - process simulation
+license: GPL-3.0-or-later
