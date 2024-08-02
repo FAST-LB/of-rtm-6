@@ -7,8 +7,8 @@
 ** Getting started
   For instructions on how to set up the project locally, the user is referred to the [[https://openfoam.org/download/source][OpenFOAM installation instructions]].
   For the usage of the RTM extensions please have a look at the [[https://github.com/FAST-LB/of6-rtm/tree/main/tutorials/OF-RTM][RTM tutorials]]:
- 1. Brinkman - permeability model verification case with the Brinkman equation for a channel with different permeabilities. See e.g. [[Syerko, 2017][https://www.sciencedirect.com/science/article/pii/S0264127517306196]]. 
- 2. Bruschke - RTM verification  case after [[Bruschke, 1990][https://onlinelibrary.wiley.com/doi/abs/10.1002/pc.750110613]] for a plate with for quadrants with different fiber orientations.
+ 1. Brinkman - permeability model verification case with the Brinkman equation for a channel with different permeabilities. See e.g. [[https://www.sciencedirect.com/science/article/pii/S0264127517306196][Syerko, 2017]]. 
+ 2. Bruschke - RTM verification  case after [[https://onlinelibrary.wiley.com/doi/abs/10.1002/pc.750110613][Bruschke, 1990]] for a plate with for quadrants with different fiber orientations.
  3. IRTM_test and CRTM_test - Simple 2D RTM case of a rectangular plate filled with a linear injection and a constant flow rate. Plate should be filled until 50% in IRTM_test and then Compression starts (tutorial CRTM_test). CRTM_test uses result of IRTM_test as start. After both tutorials you can run `gnuplot pressures.gnu` in the main tutorials folder. The file "pressures.pdf" is generated and should give the same result like the analytic solution plotted. 
  4. L-Section - L-shaped geometry with linear injection, **cure kinetics and cure viscosity**.
  
