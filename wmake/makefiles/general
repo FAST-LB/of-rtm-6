@@ -61,10 +61,10 @@ OBJECTS_DIR     = $(MAKE_DIR)/$(WM_OPTIONS)
 SYS_INC         =
 SYS_LIBS        =
 
-PROJECT_INC     = -I$(LIB_SRC)/$(WM_PROJECT)/lnInclude \
+PROJECT_INC     = -I$(LIB_SRC)/OpenFOAM/lnInclude \
 		     -I$(LIB_SRC)/OSspecific/$(WM_OSTYPE)/lnInclude
 
-PROJECT_LIBS    = -l$(WM_PROJECT)
+PROJECT_LIBS    = -lOpenFOAM
 
 EXE_INC         =
 EXE_LIBS        =
@@ -83,7 +83,7 @@ LIB             = libNULL
 SO              = so
 
 # Project executable
-EXE             = $(WM_PROJECT).out
+EXE             = OpenFOAM.out
 
 # Standalone executable
 SEXE            = a.out

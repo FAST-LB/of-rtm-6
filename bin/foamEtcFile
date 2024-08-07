@@ -54,14 +54,14 @@ options:
   -prefix <dir>     specify an alternative installation prefix
   -quiet            suppress all normal output
   -silent           suppress all stderr output
-  -version <ver>    specify an alternative OpenFOAM version
+  -version <ver>    specify an alternative of-rtm version
                     in the form Maj.Min.Rev (eg, 1.7.0)
   -help             print the usage
 
-Searches for OpenFOAM configuration files, that are generally found in the
+Searches for of-rtm configuration files, that are generally found in the
 installation "etc" directory, but can be located in the following locations,
 listed in order of precedence:
-- user level: \${HOME}/.OpenFOAM
+- user level: \${HOME}/.of-rtm
 - group level: \$FOAM_INST_DIR/site
 - other level: \$WM_PROJECT_DIR/etc
 
@@ -106,12 +106,12 @@ unset versionNum
 # handle standard and debian naming convention
 #
 case "$projectDirName" in
-OpenFOAM-*)         # standard naming convention OpenFOAM-<VERSION>
-    version="${projectDirName##OpenFOAM-}"
+of-rtm-*)         # standard naming convention of-rtm-<VERSION>
+    version="${projectDirName##of-rtm-}"
     ;;
 
-openfoam[0-9]* | openfoam-dev)     # debian naming convention 'openfoam<VERSION>'
-    versionNum="${projectDirName##openfoam}"
+of-rtm[0-9]* | of-rtm-dev)     # debian naming convention 'of-rtm<VERSION>'
+    versionNum="${projectDirName##of-rtm}"
     case "$versionNum" in
     ??)         # convert 2 digit version number to decimal delineated
         version=$(echo "$versionNum" | sed -e 's@\(.\)\(.\)@\1.\2@')
@@ -211,15 +211,15 @@ done
 
 
 # Save the essential bits of information
-# silently remove leading ~OpenFOAM/ (used in Foam::findEtcFile)
+# silently remove leading ~of-rtm/ (used in Foam::findEtcFile)
 nArgs=$#
-fileName="${1#~OpenFOAM/}"
+fileName="${1#~of-rtm/}"
 
 # Define the various places to be searched:
 unset dirList
 case "$mode" in
 *u*)  # user
-    userDir="$HOME/.${WM_PROJECT:-OpenFOAM}"
+    userDir="$HOME/.${WM_PROJECT:-of-rtm}"
     dirList="$dirList $userDir/$version $userDir"
     ;;
 esac
@@ -236,10 +236,10 @@ case "$mode" in
     if [ -n "$versionNum" ]
     then
         # debian packaging
-        dirList="$dirList $prefixDir/openfoam$versionNum/etc"
+        dirList="$dirList $prefixDir/of-rtm$versionNum/etc"
     else
         # standard packaging
-        dirList="$dirList $prefixDir/${WM_PROJECT:-OpenFOAM}-$version/etc"
+        dirList="$dirList $prefixDir/${WM_PROJECT:-of-rtm}-$version/etc"
     fi
     ;;
 esac
