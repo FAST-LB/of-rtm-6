@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: of6-rtm
+title: of-rtm-6
 message: >-
   This is an extension to OpenFOAM-6 in order to predict the
   infiltration behavior in Liquid Composite Molding
@@ -76,7 +76,7 @@ identifiers:
   - type: doi
     value: ---
     description: Zenodo archive
-repository-code: 'https://github.com/FAST-LB/of6-rtm'
+repository-code: 'https://github.com/FAST-LB/of-rtm-6'
 abstract: >-
   To capture the infiltration flow of a resin in a porous
   fiber structure, it is necessary to model a fiber

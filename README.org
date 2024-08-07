@@ -1,12 +1,12 @@
-* of6-rtm
+* of-rtm-6
 ** About the project
-  This software is designed for simulations of mold filling and curing in resin transfer molding, a manufacturing process for continuous-fiber reinforced composites. It is based on [[https://github.com/OpenFOAM/OpenFOAM-6.git][OpenFOAM-6]], a free, open source computational fluid dynamics (CFD) software package released by the OpenFOAM Foundation. Relevant extensions presented in of6-rtm consist in heterogeneous and porosity dependent permeability, resin cure and cure dependent transport modelling.
+  This software is designed for simulations of mold filling and curing in resin transfer molding, a manufacturing process for continuous-fiber reinforced composites. It is based on [[https://github.com/OpenFOAM/OpenFOAM-6.git][OpenFOAM-6]], a free, open source computational fluid dynamics (CFD) software package released by the OpenFOAM Foundation. Relevant extensions presented in of-rtm-6 consist in heterogeneous and porosity dependent permeability, resin cure and cure dependent transport modelling.
 
   This software originates from KIT's Institute of Vehicle Systems Technology (FAST), Division Lightweight Engineering (Prof. Kärger).
 
 ** Getting started
   For instructions on how to set up the project locally, the user is referred to the [[https://openfoam.org/download/source][OpenFOAM installation instructions]].
-  For the usage of the RTM extensions please have a look at the [[https://github.com/FAST-LB/of6-rtm/tree/main/tutorials/OF-RTM][RTM tutorials]]:
+  For the usage of the RTM extensions please have a look at the [[https://github.com/FAST-LB/of-rtm-6/tree/main/tutorials/OF-RTM][RTM tutorials]]:
  1. Brinkman - permeability model verification case with the Brinkman equation for a channel with different permeabilities. See e.g. [[https://www.sciencedirect.com/science/article/pii/S0264127517306196][Syerko, 2017]]. 
  2. Bruschke - RTM verification  case after [[https://onlinelibrary.wiley.com/doi/abs/10.1002/pc.750110613][Bruschke, 1990]] for a plate with for quadrants with different fiber orientations.
  3. IRTM_test and CRTM_test - Simple 2D RTM case of a rectangular plate filled with a linear injection and a constant flow rate. Plate should be filled until 50% in IRTM_test and then Compression starts (tutorial CRTM_test). CRTM_test uses result of IRTM_test as start. After both tutorials you can run `gnuplot pressures.gnu` in the main tutorials folder. The file "pressures.pdf" is generated and should give the same result like the analytic solution plotted. 
@@ -33,18 +33,18 @@ Please note we have a code of conduct, please follow it in all your interactions
  You might have a look at the [[https://openfoam.org/dev/coding-style-guide][OpenFOAM C++ Style Guide]].
 *** Code of Conduct
 
-Please refer to our [[Code of Conduct][https://github.com/FAST-LB/of6-rtm/blob/main/CODE_OF_CONDUCT.md]].
+Please refer to our [[Code of Conduct][https://github.com/FAST-LB/of-rtm-6/blob/main/CODE_OF_CONDUCT.md]].
  
 ** License
-  of6-rtm is free software: you can redistribute it and/or modify it under the
+  of-rtm-6 is free software: you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software
   Foundation, either version 3 of the License, or (at your option) any later
   version.  License terms under which you can copy the files can be found [[./COPYING][in our repo]] or at the
   [[https://www.gnu.org/licenses/][GNU license page]].
 
-** Citing of6-rtm
-  You need to cite of6-rtm when using it. Click [[./CITATION.cff][here]] to see how to cite of6-rtm.
-A. Bernath, J. Seuffert, S. Dietrich, N. Poppe, D. Magagnato, F. Wittemann, F. Henning, L. Kärger. (2024) of6-rtm – An OpenFOAM-6 extension with curing models and anisotropic permeability for usage in LCM simulations. Karlsruhe Institute of Technology (KIT). available at: https://github.com/FAST-LB/of6-rtm DOI:
+** Citing of-rtm-6
+  You need to cite of-rtm-6 when using it. Click [[./CITATION.cff][here]] to see how to cite of-rtm-6.
+A. Bernath, J. Seuffert, S. Dietrich, N. Poppe, D. Magagnato, F. Wittemann, F. Henning, L. Kärger. (2024) of-rtm-6 – An OpenFOAM-6 extension with curing models and anisotropic permeability for usage in LCM simulations. Karlsruhe Institute of Technology (KIT). available at: https://github.com/FAST-LB/of-rtm-6 DOI:
 
 ** Contributions Under Repository License
   Whenever you add Content to this repository, you license that Content under the terms defined in the license in the repository, and you agree that you have the right to license that Content under those terms. If you have a separate agreement to license that Content under different terms, such as a contributor license agreement, that agreement will supersede.
@@ -53,7 +53,7 @@ A. Bernath, J. Seuffert, S. Dietrich, N. Poppe, D. Magagnato, F. Wittemann, F. H
 ** Contact
   FAST LB
   lt-github@fast.kit.edu
-  Project Link: [[https://github.com/FAST-LB/of6-rtm]]
+  Project Link: [[https://github.com/FAST-LB/of-rtm-6]]
 
 ** Acknowledgements
 - TC² - Technologycluster Composite, „RTM CAE/CAx - Development of a continuous CAE/CAx chain for the RTM process against the background of the production of high-performance fiber composites“  2011-2013
