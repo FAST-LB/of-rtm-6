@@ -51,8 +51,8 @@ A. Bernath, J. Seuffert, S. Dietrich, N. Poppe, D. Magagnato, F. Wittemann, F. H
   Isn't this just how it works already? Yep. This is widely accepted as the norm in the open-source community; it's commonly referred to by the shorthand "inbound=outbound". We're just making it explicit.
 
 ** Contact
-  FAST LB
-  lt-github@fast.kit.edu
+  FAST LB\
+  lt-github@fast.kit.edu\
   Project Link: [[https://github.com/FAST-LB/of-rtm-6]]
 
 ** Acknowledgements
