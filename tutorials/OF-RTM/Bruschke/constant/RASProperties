@@ -1,29 +1,24 @@
-/*---------------------------------------------------------------------------------------------------------------------------------------*\
-|                                                                                                                                         | 
-|    ANSA_VERSION: 13.2.2                                                                                                                 | 
-|                                                                                                                                         | 
-|    file created by  A N S A  Tue Jul 24 17:35:30 2012                                                                                   | 
-|                                                                                                                                         | 
-|    Output from: /usrfem/Projects/2_Active/forschung/Diplomarbeiten/12_Unix/Bernath/05_Motorhaube_scirocco/05_motorhaube_scirocco.ansa   | 
-|                                                                                                                                         | 
-\*---------------------------------------------------------------------------------------------------------------------------------------*/
-
-
-
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
 FoamFile
 {
-	version 2.0;
-	format ascii;
-	class dictionary;
-	location "";
-	object RASProperties;
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      RASProperties;
 }
-/*---------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------*/
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-RASModel laminar;
+RASModel        laminar;
 
-turbulence off;
+turbulence      off;
 
-printCoeffs off;
+printCoeffs     off;
 
+// ************************************************************************* //

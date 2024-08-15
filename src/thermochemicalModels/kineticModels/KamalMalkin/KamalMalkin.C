@@ -79,24 +79,6 @@ void Foam::kineticModels::KamalMalkin::calcCureRate
 	volScalarField& cureRate
 ) const
 {
-//	const Time& runTime = cure.time();
-//	const fvMesh& mesh = cure.mesh();
-//    tmp<volScalarField> tmpCureRate (
-//        new volScalarField (
-//            IOobject (
-//                "tmpCureRate",
-//                runTime.timeName(),
-//                mesh,
-//                IOobject::NO_READ,
-//                IOobject::NO_WRITE
-//            ),
-//            mesh,
-//            dimensionedScalar("zero", dimless/dimTime, 0)
-//        )
-//    );
-
-//    // Get the non-const reference to the temporary object.
-//    volScalarField& cureRate = tmpCureRate.ref();
     forAll(cellZoneIDs_, zoneI)
     {
         const labelList& cells = mesh_.cellZones()[cellZoneIDs_[zoneI]];
@@ -110,8 +92,6 @@ void Foam::kineticModels::KamalMalkin::calcCureRate
             cureRate[cells[j]] = ((K1+K2*pow(max(cure[cells[j]], scalar(0.0)), m_))*pow(max((scalar(1.0)-cure[cells[j]]), scalar(0)), n_)).value();
         }
     }
-
-//    return cureRate;
 }
 
 bool Foam::kineticModels::KamalMalkin::writeData(Ostream& os) const
