@@ -74,7 +74,7 @@ authors:
     orcid: 'https://orcid.org/0000-0002-6534-6518'
 identifiers:
   - type: doi
-    value: ---
+    value: 10.5281/zenodo.13327698
     description: Zenodo archive
 repository-code: 'https://github.com/FAST-LB/of-rtm-6'
 abstract: >-
@@ -85,9 +85,10 @@ abstract: >-
 keywords:
   - Resin Transfer Molding
   - Liquid Composite Molding
-  - anisotropic porous media
+  - process simulation
   - curing
+  - kinetic properties
+  - fvf dependent permeability
   - deforming mesh
   - adaptive fiber volume fraction
-  - process simulation
 license: GPL-3.0-or-later
