@@ -85,25 +85,6 @@ void Foam::kineticModels::Grindling::calcCureRate
 	volScalarField& cureRate
 ) const
 {
-//	const Time& runTime = cure.time();
-//	const fvMesh& mesh = cure.mesh();
-//    tmp<volScalarField> tmpCureRate (
-//        new volScalarField (
-//            IOobject (
-//                "tmpCureRate",
-//                runTime.timeName(),
-//                mesh,
-//                IOobject::NO_READ,
-//                IOobject::NO_WRITE
-//            ),
-//            mesh,
-//            dimensionedScalar("zero", dimless/dimTime, 0)
-//        )
-//    );
-//
-//    // Get the non-const reference to the temporary object.
-//    volScalarField& cureRate = tmpCureRate.ref();
-
 	volScalarField K1 = A1_*exp(-E1_/(R_*T));
 	volScalarField K2 = A2_*exp(-E2_/(R_*T));
 

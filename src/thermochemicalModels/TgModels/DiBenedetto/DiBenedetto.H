@@ -30,7 +30,6 @@ Description
 
 SourceFiles
     DiBenedetto.C
-    DiBenedettoTemplates.C
 
 \*---------------------------------------------------------------------------*/
 
@@ -114,12 +113,6 @@ public:
 
 } // End namespace TgModels
 } // End namespace Foam
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-//#ifdef NoRepository
-//    #include "DiBenedettoTemplates.C"
-//#endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -30,7 +30,6 @@ Description
 
 SourceFiles
     KamalMalkin.C
-    KamalMalkinTemplates.C
 
 \*---------------------------------------------------------------------------*/
 
@@ -78,39 +77,7 @@ class KamalMalkin
         //- Model coeffient m (user-supplied) [-]
         dimensionedScalar m_;
 
-//        //- Name of density field
-//        word rhoName_;
-//
-//        //- Name of dynamic viscosity field
-//        word muName_;
-//
-//        //- Name of kinematic viscosity field
-//        word nuName_;
-
-
     // Private Member Functions
-
-//        //- Apply
-//        template<class RhoFieldType>
-//        void apply
-//        (
-//            scalarField& Udiag,
-//            vectorField& Usource,
-//            const scalarField& V,
-//            const RhoFieldType& rho,
-//            const scalarField& mu,
-//            const vectorField& U
-//        ) const;
-//
-//        //- Apply
-//        template<class RhoFieldType>
-//        void apply
-//        (
-//            tensorField& AU,
-//            const RhoFieldType& rho,
-//            const scalarField& mu,
-//            const vectorField& U
-//        ) const;
 
         //- Disallow default bitwise copy construct
         KamalMalkin(const KamalMalkin&);
@@ -159,12 +126,6 @@ public:
 
 } // End namespace kineticModels
 } // End namespace Foam
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-//#ifdef NoRepository
-//    #include "KamalMalkinTemplates.C"
-//#endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
