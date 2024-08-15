@@ -44,7 +44,7 @@ Please refer to our [[Code of Conduct][https://github.com/FAST-LB/of-rtm-6/blob/
 
 ** Citing of-rtm-6
   You need to cite of-rtm-6 when using it. Click [[./CITATION.cff][here]] to see how to cite of-rtm-6.
-A. Bernath, J. Seuffert, S. Dietrich, N. Poppe, D. Magagnato, F. Wittemann, F. Henning, L. Kärger. (2024) of-rtm-6 – An OpenFOAM-6 extension with curing models and anisotropic permeability for usage in LCM simulations. Karlsruhe Institute of Technology (KIT). available at: https://github.com/FAST-LB/of-rtm-6 DOI:
+A. Bernath, J. Seuffert, S. Dietrich, N. Poppe, D. Magagnato, F. Wittemann, F. Henning, L. Kärger. (2024) of-rtm-6 – An OpenFOAM-6 extension with curing models and anisotropic permeability for usage in LCM simulations. Karlsruhe Institute of Technology (KIT). available at: https://github.com/FAST-LB/of-rtm-6 DOI: 10.5281/zenodo.13327698
 
 ** Contributions Under Repository License
   Whenever you add Content to this repository, you license that Content under the terms defined in the license in the repository, and you agree that you have the right to license that Content under those terms. If you have a separate agreement to license that Content under different terms, such as a contributor license agreement, that agreement will supersede.
