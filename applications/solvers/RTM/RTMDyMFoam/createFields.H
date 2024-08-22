@@ -35,11 +35,10 @@ volScalarField fiberVolFraction
         "fiberVolFraction",
         runTime.timeName(),
         mesh,
-        IOobject::READ_IF_PRESENT,
-        IOobject::NO_WRITE
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
     ),
-    mesh,
-    dimensionedScalar("fvf", dimless, 0.0)
+    mesh
 );
 
 volTensorField KField

@@ -24,7 +24,7 @@ volScalarField cureEff
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
     ),
     mesh,
 	dimensionedScalar("zero", dimless, scalar(0.0))
@@ -55,7 +55,7 @@ volScalarField TgEff
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
     ),
     mesh,
 	dimensionedScalar("dimTemperature", dimless, scalar(0.0))
