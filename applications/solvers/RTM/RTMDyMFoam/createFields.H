@@ -130,7 +130,7 @@ volScalarField mu
         runTime.timeName(),
         mesh,
         IOobject::READ_IF_PRESENT,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
     ),
     alpha1*mixture.thermo1().mu() + alpha2*mixture.thermo2().mu()
 );

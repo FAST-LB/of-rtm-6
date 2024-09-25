@@ -61,6 +61,7 @@ Description
 #include "IOkineticModelList.H"
 #include "IOTgModelList.H"
 #include "IOporosityModelList.H"
+#include "Polynomial.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -137,7 +138,7 @@ int main(int argc, char *argv[])
                 #include "cureEqn.H"
             }
             
-            mu = alpha1*mixture.thermo1().mu() + alpha2*mixture.thermo2().mu();
+            #include "calcMu.H"
 
             // --- Pressure corrector loop
             while (pimple.correct())
@@ -171,6 +172,7 @@ int main(int argc, char *argv[])
                         cureEff[cellI] = 0.0;
                     }
                 }
+                cureEff.correctBoundaryConditions();
 
                 if (TgZones.active())
                 {
@@ -186,6 +188,7 @@ int main(int argc, char *argv[])
                             TgEff[cellI] = 0.0;
                         }
                     }
+                    TgEff.correctBoundaryConditions();
                     kineticZones.calcMaterialState(cureEff,T,TgEff,materialState);
                 } 
                 else

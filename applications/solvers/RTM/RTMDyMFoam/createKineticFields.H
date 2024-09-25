@@ -58,7 +58,7 @@ volScalarField TgEff
         IOobject::AUTO_WRITE
     ),
     mesh,
-	dimensionedScalar("dimTemperature", dimless, scalar(0.0))
+	dimensionedScalar("zero", dimTemperature, scalar(0.0))
 );
 
 IOTgModelList TgZones(mesh);

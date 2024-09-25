@@ -18,7 +18,5 @@
     cureEqn.relax();
     cureEqn.solve();
     
-    //mu = alpha1*mixture.thermo1().mu() + alpha2*mixture.thermo2().mu();
-
     Info<< "min(cure)/max(cure): " << min(cure).value() << "/" << max(cure).value() << endl;
 }

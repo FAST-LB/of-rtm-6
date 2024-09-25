@@ -26,12 +26,12 @@ Application
 
     compressibleInterDyMFoam extended by reaction kinetics, viscosity modeling
     and drag due to fibers.
-
-    Alexander Bernath - KIT-FAST-LBT
-    alexander.bernath@kit.edu
     
     Julian Seuffert - KIT-FAST-LBT
     julian.seuffert@kit.edu
+
+    Alexander Bernath - KIT-FAST-LBT
+    alexander.bernath@kit.edu
 
 Description
     CRTM solver for 2 compressible, isothermal immiscible fluids using a VOF
@@ -234,6 +234,7 @@ int main(int argc, char *argv[])
                     cureEff[cellI] = 0.0;
                 }
             }
+            cureEff.correctBoundaryConditions();
 
             if (TgZones.active())
             {
@@ -249,6 +250,7 @@ int main(int argc, char *argv[])
                         TgEff[cellI] = 0.0;
                     }
                 }
+                TgEff.correctBoundaryConditions();
                 kineticZones.calcMaterialState(cureEff,T,TgEff,materialState);
             } 
             else

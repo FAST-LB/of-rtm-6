@@ -151,6 +151,7 @@ void Foam::kineticModel::calcMaterialState
             }
         }
     }
+    materialState.correctBoundaryConditions();
 }
 
 void Foam::kineticModel::calcMaterialState
@@ -174,6 +175,7 @@ void Foam::kineticModel::calcMaterialState
             }
         }
     }
+    materialState.correctBoundaryConditions();
 }
 
 bool Foam::kineticModel::writeData(Ostream& os) const
