@@ -89,24 +89,7 @@ Foam::tmp<Foam::volTensorField> Foam::porosityModels::fiberDarcyForchheimer::K()
         const labelList& cells = mesh_.cellZones()[cellZoneIDs_[zoneI]];
         forAll(cells, j)
         {            
-            if (D_[zoneI][j].xx() > 1)
-                permeability.ref()[cells[j]].xx() = 1 / D_[zoneI][j].xx();
-            if (D_[zoneI][j].xy() > 1)
-                permeability.ref()[cells[j]].xy() = 1 / D_[zoneI][j].xy();
-            if (D_[zoneI][j].xz() > 1)
-                permeability.ref()[cells[j]].xz() = 1 / D_[zoneI][j].xz();
-            if (D_[zoneI][j].yx() > 1)
-                permeability.ref()[cells[j]].yx() = 1 / D_[zoneI][j].yx();
-            if (D_[zoneI][j].yy() > 1)            
-                permeability.ref()[cells[j]].yy() = 1 / D_[zoneI][j].yy();
-            if (D_[zoneI][j].yz() > 1)
-                permeability.ref()[cells[j]].yz() = 1 / D_[zoneI][j].yz();
-            if (D_[zoneI][j].zx() > 1)
-                permeability.ref()[cells[j]].zx() = 1 / D_[zoneI][j].zx();
-            if (D_[zoneI][j].zy() > 1)
-                permeability.ref()[cells[j]].zy() = 1 / D_[zoneI][j].zy();
-            if (D_[zoneI][j].zz() > 1)
-                permeability.ref()[cells[j]].zz() = 1 / D_[zoneI][j].zz();
+            permeability.ref()[cells[j]] = inv(D_[zoneI][j]);
         }
     }
     
