@@ -36,7 +36,7 @@ volScalarField fiberVolFraction
         runTime.timeName(),
         mesh,
         IOobject::READ_IF_PRESENT,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
     ),
     mesh,
     dimensionedScalar("fvf", dimless, 0.0)
@@ -50,7 +50,7 @@ volTensorField KField
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
     ),
     mesh,
     dimensionedTensor("Perm", dimLength*dimLength, Zero),
@@ -65,7 +65,7 @@ volVectorField drapeDirection
         runTime.timeName(),
         mesh,
         IOobject::READ_IF_PRESENT,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
     ),
     mesh,
     dimensionedVector("dD", dimless, Zero)
